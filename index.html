@@ -481,7 +481,18 @@
   }
 });
 
-// Toggle overlay when navbar opens/closes
+const navbarCollapse = document.querySelector('.navbar-collapse');
+  const overlay = document.getElementById('nav-overlay');
+  const toggler = document.querySelector('.navbar-toggler');
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+  
+
+
+
+
+ 
+  // Toggle overlay when navbar opens/closes
 navbarCollapse.addEventListener('show.bs.collapse', () => {
   overlay.classList.add('active');
 });
@@ -523,4 +534,5 @@ dropdownToggles.forEach(toggle => {
 </script>
   </body>
 </html>
+
 
