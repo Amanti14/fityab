@@ -211,29 +211,51 @@ const navbarCollapse = document.querySelector('.navbar-collapse');
   const toggler = document.querySelector('.navbar-toggler');
   const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
+  
+
+
+
+
+ 
   // Toggle overlay when navbar opens/closes
-  navbarCollapse.addEventListener('show.bs.collapse', () => {
-    overlay.classList.add('active');
-  });
+navbarCollapse.addEventListener('show.bs.collapse', () => {
+  overlay.classList.add('active');
+});
 
-  navbarCollapse.addEventListener('hide.bs.collapse', () => {
-    overlay.classList.remove('active');
-  });
+navbarCollapse.addEventListener('hide.bs.collapse', () => {
+  overlay.classList.remove('active');
+});
 
-  // Clicking overlay closes menu
-  overlay.addEventListener('click', () => {
-    const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: true });
-    overlay.classList.remove('active');
-  });
+// Clicking overlay closes menu
+overlay.addEventListener('click', () => {
+  const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: true });
+  overlay.classList.remove('active');
+});
 
-  // Clicking nav link closes menu
-  navLinks.forEach(link => {
+// Clicking nav link closes menu, but NOT dropdown toggles
+navLinks.forEach(link => {
+  if (!link.classList.contains('dropdown-toggle')) {
     link.addEventListener('click', () => {
       const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: true });
       overlay.classList.remove('active');
     });
+  }
+});
+
+// Dropdown toggle open/close manually
+const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+dropdownToggles.forEach(toggle => {
+  const dropdown = new bootstrap.Dropdown(toggle, { autoClose: false });
+
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();          // Prevent default link behavior
+    e.stopPropagation();         // Prevent navbar collapse
+    dropdown.toggle();           // Manually open/close
   });
+});
 </script>
 </body>
 
 </html>
+
