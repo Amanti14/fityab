@@ -1,11 +1,4 @@
 
-.marquee-container {
-   width: 100%;
-   background-color: black;
-   padding: 38px 0;
-   border-top: solid 3px white;
-   border-bottom: solid 3px white;
- }
 
  .marquee-content {
    display: flex;
@@ -215,3 +208,41 @@ body, p, a, li {
     visibility: visible;
   }
 }
+
+
+
+/* Full-width container with background */
+  .marquee-container {
+    position: relative; /* to position the marquee absolutely */
+    height: 200px; /* adjust height as needed */
+    overflow: hidden; /* hide scrollbars and extra width */
+    background-color: black;
+    background-size: cover;
+    padding: 38px 0;
+    white-space: nowrap;
+  }
+
+  /* Marquee content */
+  .marquee {
+    position: absolute;
+    display: inline-block; 
+    animation: scroll-right-left 10s linear infinite;
+  }
+
+  /* Image styling */
+  .marquee img {
+    max-width: 150px;
+    height: auto;
+    margin-right: 50px;
+    filter: grayscale(100%) brightness(80%);
+  }
+
+  /* Keyframes for one-way scroll */
+  @keyframes scroll-right-left {
+    0% {
+      transform: translateX(100vw); /* start offscreen right */
+    }
+    100% {
+      transform: translateX(-100%); /* move fully offscreen left */
+    }
+  }
