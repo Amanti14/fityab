@@ -1,163 +1,537 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FitYab | Mr. Ethiopia 2025 & Certified Personal Trainer | Online Fitness Coaching</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <title>FitYab - Professional Online Fitness Coaching & Bodybuilding Programs</title>
+  <meta name="description" content="Transform your body with FitYab's professional online coaching, custom workout plans, and premium fitness supplements. Expert bodybuilding training and nutrition guidance for real results." />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+<!-- ===== HEADER ===== -->
+<header id="global-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <img src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/047625f7-6c76-422e-df4b-9de3f23a0f00/publicContain" alt="FitYab" />
+      </a>
 
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  </head>
-  <body>
+      <nav class="desktop-nav">
+        <a href="/about" class="nav-link">About</a>
+        <a href="/online-coaching" class="nav-link">Online Coaching</a>
+        <a href="/supplements" class="nav-link">Supplements</a>
+        <a href="/transformation-results" class="nav-link">Transformations</a>
+        <a href="/online-coaching" class="btn-primary">Start Your Transformation</a>
+      </nav>
 
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-  
-  <div class="carousel-inner" style="overflow: hidden;">
-    <div class="carousel-item active">
-      <img src="assets/img/yabsera edit.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Banner 1">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Train with a Champion</h5>
-        <p>Transform your body and mindset with expert guidance.</p>
-      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
     </div>
-    <div class="carousel-item">
-      <img src="assets/img/yabsera edit.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Banner 2">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Discipline Creates Strength</h5>
-        <p>Consistency builds results that last.</p>
-      </div>
+  </div>
+
+  <div class="mobile-nav" id="mobileMenu">
+    <div class="mobile-nav-inner">
+      <a href="/about" class="mobile-nav-link">About</a>
+      <a href="/online-coaching" class="mobile-nav-link">Online Coaching</a>
+      <a href="/supplements" class="mobile-nav-link">Supplements</a>
+      <a href="/transformation-results" class="mobile-nav-link">Transformations</a>
+      <a href="/online-coaching" class="btn-primary-mobile">Start Your Transformation</a>
     </div>
-    <div class="carousel-item">
-      <img src="assets/img/yabsera edit.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Banner 3">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Start Your Transformation</h5>
-        <p>Join the next generation of champions.</p>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/8d120c66-04eb-4901-d709-accbafc55800/public" alt="Athlete performing deadlift in gym" />
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content container">
+    <div style="max-width: 48rem;">
+      <div class="hero-badge">
+        <span class="badge-dot animate-pulse"></span>
+        <span class="badge-text">Elite Personal Training &amp; Coaching</span>
+      </div>
+
+      <h1 class="hero-title">
+        TRANSFORM<br>
+        <span class="accent">YOUR BODY</span><br>
+        REDEFINE YOUR LIMITS
+      </h1>
+
+      <p class="hero-subtitle">
+        World-class coaching, premium supplements, and elite fitness apparel.
+        Everything you need to build the physique you deserve.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="/online-coaching" class="btn-primary" style="font-size:1.125rem; padding:.875rem 2rem;">
+          <span>Start Coaching</span>
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="/supplements" class="btn-secondary-outline">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span>Shop Supplements</span>
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Clients Transformed</div>
+        </div>
+        <div>
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Competition Wins</div>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-mouse">
+      <div class="scroll-dot animate-bounce"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY FITYAB ===== -->
+<section class="section-dark">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Why Choose <span class="accent">FitYab</span>?</h2>
+      <p class="section-subtitle">We're not just trainers — we're partners in your transformation journey</p>
+    </div>
+
+    <div class="features-grid">
+      <!-- Feature 1 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3 class="feature-title">Expert Guidance</h3>
+        <p class="feature-desc">Certified personal trainer with competitive bodybuilding experience. Get proven strategies that work.</p>
+      </div>
+      <!-- Feature 2 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
+        <h3 class="feature-title">Customized Programs</h3>
+        <p class="feature-desc">Every body is different. Get workout and nutrition plans tailored specifically to your goals and body type.</p>
+      </div>
+      <!-- Feature 3 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="feature-title">24/7 Support</h3>
+        <p class="feature-desc">Direct access to your coach. Weekly check-ins, progress tracking, and unlimited motivation.</p>
+      </div>
+      <!-- Feature 4 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <h3 class="feature-title">Holistic Approach</h3>
+        <p class="feature-desc">Training is only part of the equation. We optimize your nutrition, recovery, and mindset.</p>
+      </div>
+      <!-- Feature 5 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3 class="feature-title">Real Results</h3>
+        <p class="feature-desc">Join hundreds of clients who've achieved their dream physique. Your transformation starts here.</p>
+      </div>
+      <!-- Feature 6 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+        </div>
+        <h3 class="feature-title">Premium Supplements</h3>
+        <p class="feature-desc">Access lab-tested supplements specifically formulated to support your training and recovery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI CHAT SECTION ===== -->
+<section id="ai-chat" class="section-dark">
+  <div class="ai-bg-blur"></div>
+  <div class="container" style="position:relative;z-index:10;">
+    <div class="ai-grid">
+      <div>
+        <div class="ai-label">
+          <span class="ai-label-line"></span>
+          <span class="ai-label-text">AI-Powered</span>
+        </div>
+        <h2 class="ai-title">CHAT WITH OUR <span class="accent2">FITNESS AI</span></h2>
+        <p class="ai-desc">Got questions about workouts, nutrition, or supplements? Our AI assistant is available 24/7 to help you with:</p>
+
+        <div class="ai-features-grid">
+          <div class="ai-feature">
+            <div class="ai-feat-icon" style="background:rgba(14,165,233,.2);">
+              <svg fill="none" stroke="#0EA5E9" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            </div>
+            <div>
+              <div class="ai-feat-title">Workout Advice</div>
+              <div class="ai-feat-desc">Get personalized training tips</div>
+            </div>
+          </div>
+          <div class="ai-feature">
+            <div class="ai-feat-icon" style="background:rgba(34,197,94,.2);">
+              <svg fill="none" stroke="#22C55E" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            <div>
+              <div class="ai-feat-title">Nutrition Guidance</div>
+              <div class="ai-feat-desc">Meal plans &amp; diet advice</div>
+            </div>
+          </div>
+          <div class="ai-feature">
+            <div class="ai-feat-icon" style="background:rgba(245,158,11,.2);">
+              <svg fill="none" stroke="#F59E0B" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            </div>
+            <div>
+              <div class="ai-feat-title">Supplement Info</div>
+              <div class="ai-feat-desc">Product recommendations</div>
+            </div>
+          </div>
+          <div class="ai-feature">
+            <div class="ai-feat-icon" style="background:rgba(220,38,38,.2);">
+              <svg fill="none" stroke="#DC2626" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            </div>
+            <div>
+              <div class="ai-feat-title">Instant Answers</div>
+              <div class="ai-feat-desc">24/7 AI support</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-ai" onclick="alert('Chat feature coming soon!')">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+          <span>Chat with AI Now</span>
+        </button>
+      </div>
+
+      <!-- Chat Widget -->
+      <div style="position:relative;">
+        <div class="chat-widget">
+          <div class="chat-header">
+            <div class="chat-header-inner">
+              <div class="chat-avatar">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              </div>
+              <div>
+                <div class="chat-name">FitYab AI Assistant</div>
+                <div class="chat-status">Online now • Ready to help</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-messages" id="chatMessages">
+            <div class="chat-msg">
+              <div class="msg-avatar" style="background:#0EA5E9;">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              </div>
+              <div class="msg-bubble ai">Hey! I'm your FitYab AI assistant. I can help you with workout plans, nutrition advice, supplement recommendations, and more. What would you like to know?</div>
+            </div>
+            <div class="chat-msg user">
+              <div class="msg-avatar" style="background:#DC2626;">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+              </div>
+              <div class="msg-bubble user-msg">What's the best protein powder for muscle gain?</div>
+            </div>
+            <div class="chat-msg">
+              <div class="msg-avatar" style="background:#0EA5E9;">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              </div>
+              <div class="msg-bubble ai">For muscle gain, I recommend Whey Protein Isolate! It has 25g protein per serving and absorbs quickly post-workout. Check out our shop for premium options at great prices! 💪</div>
+            </div>
+          </div>
+
+          <div class="chat-input-area">
+            <input type="text" id="chatInputField" class="chat-input" placeholder="Ask anything..." />
+            <button class="chat-send" id="chatSendBtn">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLOATING CHAT BUTTON ===== -->
+<div id="float-chat">
+  <button class="float-btn" onclick="alert('Chat feature coming soon!')" aria-label="Open chat">
+    <span class="float-ping animate-ping"></span>
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+    <span class="float-dot"></span>
+  </button>
+  <div class="float-tooltip">Chat with AI</div>
 </div>
 
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="position: fixed; top: 10px; width: 100%;"> -->
-<nav class="navbar navbar-expand-lg" id="navbar" style="position: fixed; top: 0; width: 100%; transition: background-color 0.3s; padding: 0px;">
-  <div class="container-fluid" style="height: 100px;">
-    <a class="navbar-brand" href="#">
-        <img src="assets/img/logo transparent.png" alt="fityab11" style="width: 98px;">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mb-2 mb-lg-0" style="margin-left: 19px;">
-         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            About
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="about.html">About FitYab</a></li>
-            <li><a class="dropdown-item" href="#">About E11EVEN CLOTHING</a></li>
-            <li><a class="dropdown-item" href="#">News & Blog</a></li>
-            
-          </ul>
-        </li>
+<!-- ===== COACHING PROGRAMS ===== -->
+<section class="section-darker">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Our <span class="accent">Coaching Programs</span></h2>
+      <p class="section-subtitle">Choose the program that fits your goals. Every plan is customized for your body and lifestyle.</p>
+    </div>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Online Training
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Training Programs</a></li>
-            <li><a class="dropdown-item" href="#">Transformation</a></li>
+    <div class="programs-grid">
+      <!-- Program 1 -->
+      <div class="program-card">
+        <div class="program-img" style="background:linear-gradient(to bottom right, #DC2626, #991B1B);">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+        </div>
+        <div class="program-body">
+          <h3 class="program-title">Beginner Transformation</h3>
+          <p class="program-desc">Perfect start for those new to fitness. Build the foundation for lasting change.</p>
+          <ul class="program-features">
+            <li><svg class="check-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Custom workout plan</li>
+            <li><svg class="check-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Nutrition guide</li>
+            <li><svg class="check-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Weekly check-ins</li>
           </ul>
-        </li>
+          <div class="program-footer">
+            <span class="program-price">$97<span>/month</span></span>
+            <a href="/online-coaching" class="btn-sm">Get Started</a>
+          </div>
+        </div>
+      </div>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            E11EVEN CLOTHING
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">About FitYab</a></li>
-            <li><a class="dropdown-item" href="#">News & Blog</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <!-- Program 2 - Popular -->
+      <div class="program-card popular">
+        <div class="popular-badge">POPULAR</div>
+        <div class="program-img" style="background:linear-gradient(to bottom right, #0EA5E9, #0369A1);">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <div class="program-body">
+          <h3 class="program-title">Muscle Gain Pro</h3>
+          <p class="program-desc">Build serious muscle with advanced training techniques and meal planning.</p>
+          <ul class="program-features">
+            <li><svg class="check-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Custom workout plan</li>
+            <li><svg class="check-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Nutrition guide</li>
+            <li><svg class="check-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Bi-weekly check-ins</li>
+            <li><svg class="check-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Progress tracking</li>
           </ul>
-        </li>
+          <div class="program-footer">
+            <span class="program-price">$147<span>/month</span></span>
+            <a href="/online-coaching" class="btn-sm">Get Started</a>
+          </div>
+        </div>
+      </div>
 
-
-        <li class="nav-item">
-          <a class="nav-link fw-bold"  href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-bold" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            FOLLOW ME
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">INSTAGRAM</a></li>
-            <li><a class="dropdown-item" href="#">TIKTOK</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <!-- Program 3 -->
+      <div class="program-card">
+        <div class="program-img" style="background:linear-gradient(to bottom right, #22C55E, #15803D);">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
+        </div>
+        <div class="program-body">
+          <h3 class="program-title">Fat Loss Accelerator</h3>
+          <p class="program-desc">Torch fat and get lean with scientific training and nutrition plans.</p>
+          <ul class="program-features">
+            <li><svg class="check-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Custom workout plan</li>
+            <li><svg class="check-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Calorie-controlled meal plan</li>
+            <li><svg class="check-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Weekly check-ins</li>
+            <li><svg class="check-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Supplement guide</li>
           </ul>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link"  href="#footer">Contact</a>
-        </li>
-      </ul>
-      <!-- <form class="d-flex ms-auto" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
+          <div class="program-footer">
+            <span class="program-price">$127<span>/month</span></span>
+            <a href="/online-coaching" class="btn-sm">Get Started</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Program 4 -->
+      <div class="program-card">
+        <div class="program-img" style="background:linear-gradient(to bottom right, #F59E0B, #B45309);">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+        </div>
+        <div class="program-body">
+          <h3 class="program-title">Competition Prep</h3>
+          <p class="program-desc">Elite coaching for physique competitors. Peak at the right time.</p>
+          <ul class="program-features">
+            <li><svg class="check-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Complete contest prep</li>
+            <li><svg class="check-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Peak week protocol</li>
+            <li><svg class="check-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Daily support</li>
+            <li><svg class="check-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Posing practice</li>
+          </ul>
+          <div class="program-footer">
+            <span class="program-price">$297<span>/month</span></span>
+            <a href="/online-coaching" class="btn-sm">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="view-all-link">
+      <a href="/online-coaching" class="link-arrow">View All Programs <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
     </div>
   </div>
-</nav>
-<!-- Overlay background -->
-<div id="nav-overlay"></div>
+</section>
 
-
-<!-- About Section 1 --->
-<section class="py-3 py-md-5">
+<!-- ===== SUPPLEMENTS ===== -->
+<section class="section-dark">
   <div class="container">
-    <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-      <div class="col-12 col-lg-6 col-xl-5">
-        <img class="img-fluid rounded" loading="lazy" src="assets/img/yabsera about me.PNG" alt="About 1">
+    <div class="section-header">
+      <h2 class="section-title">Premium <span class="accent">Supplements</span></h2>
+      <p class="section-subtitle">Lab-tested supplements designed to maximize your training results and recovery.</p>
+    </div>
+
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-img-area">
+          <svg style="color:rgba(220,38,38,.5);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          <span class="product-badge-tag" style="background:#DC2626;">BESTSELLER</span>
+        </div>
+        <div class="product-body">
+          <h3 class="product-title">Whey Protein Isolate</h3>
+          <p class="product-desc">25g protein per serving. Fast-absorbing for post-workout recovery.</p>
+          <div class="product-footer">
+            <span class="product-price">$59.99</span>
+            <button class="btn-cart">Add to Cart</button>
+          </div>
+        </div>
       </div>
-      <div class="col-12 col-lg-6 col-xl-7">
-        <div class="row justify-content-xl-center">
-          <div class="col-12 col-xl-11">
-            <h2 class="mb-3">Who is Yabsera Zenebe?</h2>
-            <p class="lead fs-4 text-secondary mb-3">I’m a Certified Personal Trainer at Ethio Dance Fitness and the reigning Mr. Ethiopia 2025. My journey began with a simple goal - to transform my body and prove what discipline can achieve.</p>
-            <p class="mb-5">Today, my mission is to help others do the same. Through focused training, proper nutrition, and a powerful mindset, I guide clients to reach their peak physical form and confidence.</p>
-            <div class="row gy-4 gy-md-0 gx-xxl-5X">
-              <div class="col-12 col-md-6">
-                <div class="d-flex">
-                  <div class="me-4 text-primary">
-                    <svg width="100px" height="100px" viewBox="44.605934143066406 25.072006225585938 935.871337890625 945.2559967041016" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M862.736 88.2L588.472 362.456l12.528 12.528c2.792 8.792 8.344 17.952 16.368 25.984 8.024 8.016 17.192 13.576 25.976 16.36l10.816 10.824 274.408-274.4c11.944-11.952 8.128-34.88-10.48-53.496-18.624-18.616-43.408-24.008-55.352-12.056z" fill="#F7BB83"/><path d="M654.16 444.152c-4.248 0-8.32-1.688-11.32-4.688l-8.24-8.248c-10.224-3.928-20.016-10.408-28.536-18.928-8.52-8.528-15-18.32-18.936-28.552l-9.96-9.96a16.008 16.008 0 0 1 0-22.632l274.264-274.256c7.216-7.224 17.008-11.04 28.312-11.04 16.632 0 35.192 8.64 49.656 23.104 24.68 24.68 29.184 57.4 10.496 76.112l-274.416 274.4a16.04 16.04 0 0 1-11.32 4.688z m-43.056-81.696l1.208 1.208c1.816 1.816 3.168 4.032 3.936 6.48 2.12 6.68 6.536 13.608 12.44 19.512 5.888 5.888 12.824 10.304 19.488 12.416 2.216 0.704 4.264 1.88 5.976 3.456l263.104-263.088c4.816-4.824 1.696-18.68-10.488-30.864-10.136-10.136-20.888-13.728-27.032-13.728-1.84 0-4.304 0.288-5.688 1.664L611.104 362.456z" fill="#6E4123"/><path d="M676.752 73.824l-52.056 52.056 46.648 46.664c12.272 30.848 34.136 63.864 64.024 93.76 29.896 29.896 62.904 51.752 93.768 64.016l51.504 51.496 52.056-52.056c36.968-36.968 5.872-127.976-63.464-197.312-69.344-69.336-155.528-95.592-192.48-58.624z" fill="#F7BB83"/><path d="M880.632 397.824a15.96 15.96 0 0 1-11.312-4.68l-49.208-49.2c-33.264-13.8-66.408-36.664-96.056-66.312-29.64-29.64-52.504-62.776-66.312-96.048l-44.36-44.376a16 16 0 0 1 0-22.624l52.056-52.056c14.016-14.024 33.88-21.44 57.432-21.44 47.872 0 108.288 30.68 157.672 80.064 78.136 78.136 106.6 176.808 63.464 219.944l-52.056 52.056a16 16 0 0 1-11.32 4.672zM647.32 125.888l35.336 35.352c1.536 1.536 2.752 3.376 3.552 5.4 11.88 29.864 33.36 61.24 60.472 88.36 27.128 27.12 58.504 48.592 88.368 60.464 2.024 0.808 3.856 2.008 5.4 3.552l40.184 40.184 40.744-40.744c26.248-26.248 4.688-106.536-63.464-174.688-42.944-42.944-95.952-70.688-135.048-70.688-15.088 0-26.8 4.056-34.808 12.064l-40.736 40.744z" fill="#6E4123"/><path d="M685.914925 320.584783a180.976 94.648 44.999 1 0 133.850149-133.854821 180.976 94.648 44.999 1 0-133.850149 133.854821Z" fill="#F7BB83"/><path d="M835.336 414.112c-48.44 0-110.024-31.504-160.728-82.208-35.976-35.976-62.552-77.384-74.84-116.616-13.4-42.768-8.496-78.608 13.808-100.904 13.856-13.848 33.488-21.168 56.792-21.168 48.44 0 110.032 31.504 160.736 82.2 35.976 35.976 62.552 77.392 74.84 116.616 13.4 42.776 8.504 78.608-13.808 100.904-13.848 13.856-33.488 21.176-56.8 21.176zM670.36 125.216c-14.84 0-26.336 3.968-34.168 11.792-13.264 13.264-15.416 38.312-5.888 68.712 10.768 34.392 34.536 71.168 66.928 103.552 44.24 44.24 98.456 72.832 138.104 72.832 14.848 0 26.344-3.968 34.168-11.792 13.264-13.264 15.416-38.312 5.888-68.712-10.776-34.384-34.536-71.168-66.928-103.56-44.24-44.232-98.448-72.824-138.104-72.824z" fill="#6E4123"/><path d="M552.44 106.264l-70.736 70.744 63.416 63.416c16.664 41.936 46.376 86.8 86.992 127.416 40.616 40.624 85.488 70.328 127.424 87l69.976 69.984 70.744-70.744c50.232-50.248 8-173.912-86.224-268.144-94.24-94.24-211.352-129.92-261.592-79.672z" fill="#F7BB83"/><path d="M829.512 540.816a16 16 0 0 1-11.312-4.688l-67.672-67.672c-44.872-18.408-89.664-49.232-129.728-89.304-40.08-40.08-70.896-84.864-89.296-129.72l-61.112-61.112a16 16 0 0 1 0-22.624l70.736-70.744c17.968-17.968 43.56-27.464 74-27.464 63.584 0 144.136 41.048 210.208 107.128 103.928 103.928 142.608 234.368 86.224 290.768l-70.744 70.744a15.976 15.976 0 0 1-11.304 4.688zM504.328 177.008l52.104 52.104c1.536 1.536 2.752 3.376 3.552 5.4 16.408 41.28 46.04 84.608 83.44 122.016 37.392 37.392 80.728 67.032 122.016 83.44 2.032 0.808 3.864 2.008 5.408 3.552l58.664 58.664 59.432-59.424c42.416-42.432 2.128-157.16-86.224-245.52-60.296-60.296-132.168-97.752-187.584-97.752-22.088 0-39.376 6.088-51.376 18.088l-59.432 59.432z" fill="#6E4123"/><path d="M895.088 888.832c0 45.008-170.744 81.496-381.344 81.496-210.608 0-381.336-36.488-381.336-81.496 0-45.008 173.392-78.168 384-78.168 210.6 0.008 378.68 33.16 378.68 78.168z" fill="#B8CBCD"/><path d="M565.975371 440.53649a245.944 128.632 44.999 1 0 181.909944-181.916294 245.944 128.632 44.999 1 0-181.909944 181.916294Z" fill="#F7BB83"/><path d="M769.04 561.872c-64.36 0-146.504-42.16-214.376-110.024C450.8 347.984 414.368 221.704 471.712 164.36c17.72-17.712 43-27.08 73.128-27.08 64.36 0 146.504 42.16 214.368 110.024 48.248 48.248 83.864 103.696 100.288 156.144 17.536 55.984 11.384 102.64-17.336 131.344-17.72 17.72-43 27.08-73.12 27.08zM544.84 169.28c-21.76 0-38.744 5.96-50.496 17.704-43.168 43.168-5.176 154.096 82.952 242.232 61.152 61.144 136.416 100.656 191.752 100.656 21.752 0 38.744-5.96 50.496-17.704 19.88-19.88 23.224-55.096 9.432-99.16-14.912-47.608-47.72-98.416-92.384-143.08-61.16-61.136-136.416-100.648-191.752-100.648z" fill="#6E4123"/><path d="M622.656 328.272L348.4 602.528l12.528 12.528c2.792 8.792 8.344 17.96 16.368 25.984 8.016 8.016 17.192 13.576 25.976 16.36l10.816 10.816 274.4-274.4c11.952-11.952 8.128-34.88-10.48-53.488-18.616-18.616-43.4-24.008-55.352-12.056z" fill="#F7BB83"/><path d="M414.088 684.216a16 16 0 0 1-11.312-4.688l-8.256-8.248c-10.232-3.936-20.032-10.424-28.536-18.928-8.52-8.512-15.008-18.312-18.936-28.552l-9.96-9.96a16 16 0 0 1 0-22.624L611.344 316.96c7.224-7.224 17.016-11.04 28.312-11.04 16.632 0 35.192 8.64 49.664 23.104 11.168 11.168 18.664 24.52 21.112 37.608 2.8 14.92-1.08 28.96-10.632 38.504l-274.4 274.392a16 16 0 0 1-11.312 4.688z m-43.056-81.688l1.208 1.216a16 16 0 0 1 3.936 6.472c2.12 6.68 6.536 13.616 12.432 19.512 5.896 5.888 12.824 10.304 19.504 12.424 2.216 0.704 4.256 1.88 5.968 3.448l263.096-263.096c2.696-2.696 2.288-7.416 1.808-9.992-1.272-6.808-5.64-14.224-12.28-20.872-10.136-10.136-20.896-13.728-27.04-13.728-1.832 0-4.304 0.288-5.688 1.664L371.032 602.528z" fill="#6E4123"/><path d="M184.896 473.8l-70.736 70.744 63.416 63.416c16.672 41.936 46.376 86.8 87 127.424 40.624 40.624 85.488 70.32 127.424 86.992l69.976 69.976 70.744-70.744c50.232-50.24 8.008-173.904-86.232-268.144-94.248-94.224-211.344-129.904-261.592-79.664z" fill="#F7BB83"/><path d="M461.968 908.36a16 16 0 0 1-11.312-4.688l-67.672-67.672c-44.872-18.416-89.664-49.24-129.72-89.296-40.072-40.072-70.896-84.864-89.304-129.728l-61.112-61.112a16 16 0 0 1 0-22.624l70.736-70.744c17.968-17.968 43.552-27.456 74-27.456 63.584 0 144.128 41.048 210.208 107.128 103.936 103.928 142.624 234.368 86.232 290.768l-70.744 70.744a16.032 16.032 0 0 1-11.312 4.68zM136.784 544.544l52.104 52.104c1.544 1.536 2.752 3.376 3.552 5.4 16.416 41.288 46.048 84.624 83.448 122.024 37.384 37.384 80.72 67.016 122.016 83.44 2.024 0.808 3.864 2.016 5.4 3.552l58.664 58.656 59.432-59.432c42.424-42.432 2.128-157.152-86.232-245.512-60.296-60.296-132.176-97.752-187.584-97.752-22.088 0-39.376 6.088-51.376 18.088l-59.424 59.432z" fill="#6E4123"/><path d="M202.1504 804.370834a245.936 128.632 44.999 1 0 181.909944-181.916294 245.936 128.632 44.999 1 0-181.909944 181.916294Z" fill="#F7BB83"/><path d="M405.216 925.696c-64.36 0-146.504-42.168-214.36-110.032-48.248-48.24-83.864-103.696-100.296-156.144-17.536-55.992-11.376-102.632 17.336-131.344 17.712-17.712 43-27.08 73.112-27.08 64.36 0 146.504 42.16 214.368 110.024 48.248 48.248 83.864 103.696 100.296 156.144 17.528 55.992 11.376 102.632-17.344 131.352-17.712 17.712-42.992 27.08-73.112 27.08zM181.016 533.104c-21.752 0-38.736 5.96-50.488 17.704-19.88 19.88-23.232 55.096-9.432 99.16 14.912 47.6 47.72 98.416 92.384 143.08 61.144 61.144 136.4 100.656 191.736 100.656 21.752 0 38.744-5.96 50.496-17.704 19.88-19.88 23.224-55.096 9.424-99.16-14.912-47.608-47.72-98.416-92.376-143.08-61.152-61.152-136.408-100.656-191.744-100.656z" fill="#6E4123"/><path d="M145.032 605.552L92.968 657.6l46.664 46.664c12.272 30.864 34.128 63.872 64.016 93.76 29.888 29.888 62.904 51.752 93.768 64.016l51.488 51.496 52.064-52.048c36.968-36.968 5.88-127.968-63.464-197.312-69.328-69.344-155.512-95.592-192.472-58.624z" fill="#F7BB83"/><path d="M348.904 929.536a15.92 15.92 0 0 1-11.312-4.688l-49.2-49.2c-33.264-13.792-66.416-36.664-96.056-66.312-29.648-29.64-52.512-62.784-66.312-96.048l-44.368-44.376a16 16 0 0 1 0-22.632l52.064-52.048c14.024-14.024 33.88-21.44 57.432-21.44 47.872 0 108.288 30.68 157.672 80.064 78.136 78.128 106.6 176.792 63.464 219.936l-52.064 52.056a15.968 15.968 0 0 1-11.32 4.688zM115.6 657.6l35.344 35.352c1.544 1.536 2.752 3.376 3.552 5.4 11.872 29.856 33.344 61.24 60.464 88.36 27.12 27.12 58.504 48.592 88.36 60.464 2.024 0.808 3.864 2.008 5.4 3.552l40.176 40.176 40.752-40.744c26.248-26.248 4.688-106.536-63.464-174.68-42.944-42.944-95.952-70.696-135.04-70.696-15.088 0-26.8 4.056-34.808 12.064L115.6 657.6z" fill="#6E4123"/><path d="M154.206239 852.300097a180.976 94.648 44.999 1 0 133.850149-133.854822 180.976 94.648 44.999 1 0-133.850149 133.854822Z" fill="#F7BB83"/><path d="M303.624 945.824c-48.44 0-110.024-31.504-160.728-82.208-35.976-35.976-62.56-77.384-74.84-116.616-13.4-42.776-8.496-78.608 13.808-100.904 13.848-13.848 33.48-21.168 56.792-21.168 48.44 0 110.024 31.504 160.728 82.208 35.984 35.976 62.56 77.392 74.848 116.616 13.4 42.776 8.496 78.608-13.808 100.904-13.856 13.848-33.496 21.168-56.8 21.168zM138.648 656.936c-14.848 0-26.344 3.968-34.168 11.792-13.264 13.264-15.416 38.312-5.888 68.712 10.768 34.384 34.536 71.168 66.928 103.552 44.248 44.24 98.456 72.832 138.104 72.832 14.848 0 26.336-3.968 34.168-11.792 13.272-13.272 15.416-38.312 5.896-68.712-10.776-34.384-34.544-71.168-66.936-103.56-44.248-44.24-98.456-72.824-138.104-72.824z" fill="#6E4123"/><path d="M178.768 772.16l-54.36 54.504 9.672 15.232c2.776 8.792 8.336 17.968 16.36 25.984 8.016 8.024 17.184 13.576 25.984 16.36l10.816 10.816 57.36-57.36c11.944-11.952 8.12-34.88-10.488-53.488-18.616-18.6-43.384-24-55.344-12.048z" fill="#F7BB83"/><path d="M187.24 911.072a15.92 15.92 0 0 1-11.312-4.688l-8.248-8.248c-10.232-3.928-20.032-10.408-28.552-18.928-9.024-9.024-15.776-19.488-19.608-30.368l-8.624-13.592a16 16 0 0 1 2.184-19.872l54.36-54.504c7.24-7.24 17.032-11.064 28.336-11.064 16.624 0 35.184 8.64 49.656 23.104 24.68 24.68 29.192 57.4 10.488 76.112l-57.36 57.36a16 16 0 0 1-11.32 4.688z m-42.464-82.168l2.808 4.424c0.744 1.168 1.336 2.44 1.752 3.76 2.104 6.664 6.512 13.584 12.416 19.488 5.896 5.896 12.824 10.312 19.496 12.424 2.224 0.704 4.264 1.88 5.976 3.456l46.056-46.056c4.816-4.816 1.696-18.68-10.488-30.864-10.136-10.136-20.896-13.728-27.024-13.728-1.832 0-4.312 0.288-5.696 1.672l-45.296 45.424z" fill="#6E4123"/><path d="M148.033099 880.152979a46.448 28.584 44.999 1 0 40.423175-40.424586 46.448 28.584 44.999 1 0-40.423175 40.424586Z" fill="#F7BB83"/><path d="M185.672 914.512c-16.216 0-34.512-8.616-48.944-23.048-10.832-10.832-18.496-23.88-21.56-36.744-3.664-15.4-0.416-29.592 8.928-38.936 6.816-6.816 16.064-10.416 26.752-10.416 16.208 0 34.504 8.616 48.936 23.048 10.832 10.832 18.496 23.888 21.56 36.752 3.664 15.4 0.416 29.6-8.928 38.936-6.816 6.808-16.064 10.408-26.744 10.408z m-34.824-77.152c-1.928 0-3.472 0.392-4.128 1.048-0.992 0.984-1.544 4.192-0.424 8.888 1.68 7.072 6.448 14.92 13.056 21.528 13.424 13.432 27.8 15.256 30.432 12.64 0.984-0.984 1.544-4.192 0.424-8.888-1.688-7.072-6.448-14.928-13.056-21.536-10.088-10.096-20.472-13.68-26.304-13.68z" fill="#6E4123"/><path d="M722.872 57.072c34.584 0 78.48 18.352 119.616 51.376l20.248-20.248c4.304-4.304 10.256-6.352 17-6.352 11.984 0 26.424 6.496 38.344 18.416 18.608 18.608 22.432 41.536 10.48 53.496l-22.504 22.512c42.168 59.928 56.168 123.968 26.632 153.504l-18.008 18.008c12.192 44.312 8.744 83.12-14.432 106.296l-69.368 69.368-0.04 0.04-0.04 0.04-1.296 1.296-0.064-0.064c-15.104 14.288-36.008 21.072-60.44 21.072-46.776 0-106.464-24.88-162.944-69.592l-121.04 121.048c66.208 85.696 90.424 181.584 47.688 224.328l-65.68 65.688v0.008l-5.048 5.048-0.28-0.28c-14.704 11.912-34.112 17.592-56.464 17.592-14.2 0-29.592-2.288-45.72-6.736l-10.36 10.36-0.032 0.04a0.176 0.176 0 0 0-0.04 0.032l-0.152 0.16-0.016-0.016c-11.144 11.024-26.8 16.24-45.16 16.24-29.48 0-65.936-13.456-101.912-37.968-0.272 0.312-0.424 0.696-0.712 0.992-3.88 3.88-9.272 5.728-15.432 5.728-11.56 0-25.792-6.528-37.624-18.36-13.48-13.472-20.024-30.016-17.952-42.224l-0.416-9.584-1.64-5.448C77.488 759.08 61.28 689.68 92.992 657.624l-0.024-0.024 10.6-10.6c-11.432-41.512-8.616-78.136 10.864-102.176l-0.28-0.28 70.736-70.744c15.44-15.44 37.2-22.768 62.664-22.76 50.072 0 114.496 28.312 173.456 78.872L539.36 411.568c-75.128-88.904-101.056-188.584-57.6-234.504l-0.056-0.056 1.168-1.168 0.152-0.168 0.168-0.152 69.248-69.256c15.432-15.432 37.176-22.744 62.632-22.744 14.128 0 29.4 2.248 45.368 6.616l16.312-16.312c11.36-11.36 27.368-16.752 46.12-16.752m0-32c-27.888 0-51.664 9.04-68.752 26.136l-3.776 3.776c-12.192-2.296-24-3.456-35.272-3.456-34.768 0-64.256 11.104-85.264 32.112l-68.88 68.888-0.336 0.328-0.76 0.776-0.76 0.76a31.36 31.36 0 0 0-2.4 2.688c-49.016 54.648-32.352 155.224 39.88 252.056l-77.864 77.864c-57.696-43.448-118.872-67.944-171.128-67.944-34.776 0-64.264 11.112-85.296 32.136l-70.736 70.744a31.84 31.84 0 0 0-5.624 7.584c-19.552 27.36-25.592 64.84-17.488 107.52-40.432 43.504-28.592 122.504 29.592 199.344l0.008 0.216c-2.216 22.176 7.832 46.632 27.416 66.2 17.616 17.616 39.576 27.728 60.248 27.728 5.016 0 9.888-0.616 14.512-1.808 35.952 21.424 72.176 33.064 103.544 33.064 26.384 0 49.048-8.168 65.744-23.656 12.384 2.368 24.344 3.56 35.744 3.56 27.88 0 52.624-7.312 71.984-21.2 2.656-1.424 5.152-3.248 7.392-5.48l5.048-5.048 0.128-0.128 65.56-65.568c49.52-49.52 37.272-147.248-28.376-243.64l82.208-82.216c54.728 38.024 111.84 59.44 159.832 59.44 32.168 0 59.864-9.624 80.296-27.864 0.968-0.768 1.904-1.592 2.8-2.488l1.272-1.272 0.4-0.4 69.104-69.104c27.264-27.264 36.616-69.016 27.008-118.872l5.432-5.432c36.6-36.608 32.816-102.32-8.344-171.8l4.224-4.224c25.152-25.168 20.64-67.616-10.488-98.744-17.656-17.656-39.88-27.784-60.968-27.784-15.416 0-29.488 5.584-39.632 15.728l-0.832 0.84c-39.592-26.52-80.92-41.36-116.4-41.36z" fill="#6E4123"/></svg>
-                  </div>
-                  <div>
-                    <h2 class="h4 mb-3">Strength & Discipline</h2>
-                    <p class="text-secondary mb-0">I believe true strength is built through consistency and discipline - inside and outside the gym.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="d-flex">
-                  <div class="me-4 text-primary">
-                    <?xml version="1.0" encoding="utf-8"?>
-<!-- License: Apache. Made by googlefonts: https://github.com/googlefonts/noto-emoji -->
-<svg width="100px" height="100px" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--noto" preserveAspectRatio="xMidYMid meet"><radialGradient id="IconifyId17ecdb2904d178eab8626" cx="68.884" cy="124.296" r="70.587" gradientTransform="matrix(-1 -.00434 -.00713 1.6408 131.986 -79.345)" gradientUnits="userSpaceOnUse"><stop offset=".314" stop-color="#ff9800"></stop><stop offset=".662" stop-color="#ff6d00"></stop><stop offset=".972" stop-color="#f44336"></stop></radialGradient><path d="M35.56 40.73c-.57 6.08-.97 16.84 2.62 21.42c0 0-1.69-11.82 13.46-26.65c6.1-5.97 7.51-14.09 5.38-20.18c-1.21-3.45-3.42-6.3-5.34-8.29c-1.12-1.17-.26-3.1 1.37-3.03c9.86.44 25.84 3.18 32.63 20.22c2.98 7.48 3.2 15.21 1.78 23.07c-.9 5.02-4.1 16.18 3.2 17.55c5.21.98 7.73-3.16 8.86-6.14c.47-1.24 2.1-1.55 2.98-.56c8.8 10.01 9.55 21.8 7.73 31.95c-3.52 19.62-23.39 33.9-43.13 33.9c-24.66 0-44.29-14.11-49.38-39.65c-2.05-10.31-1.01-30.71 14.89-45.11c1.18-1.08 3.11-.12 2.95 1.5z" fill="url(#IconifyId17ecdb2904d178eab8626)"></path><radialGradient id="IconifyId17ecdb2904d178eab8627" cx="64.921" cy="54.062" r="73.86" gradientTransform="matrix(-.0101 .9999 .7525 .0076 26.154 -11.267)" gradientUnits="userSpaceOnUse"><stop offset=".214" stop-color="#fff176"></stop><stop offset=".328" stop-color="#fff27d"></stop><stop offset=".487" stop-color="#fff48f"></stop><stop offset=".672" stop-color="#fff7ad"></stop><stop offset=".793" stop-color="#fff9c4"></stop><stop offset=".822" stop-color="#fff8bd" stop-opacity=".804"></stop><stop offset=".863" stop-color="#fff6ab" stop-opacity=".529"></stop><stop offset=".91" stop-color="#fff38d" stop-opacity=".209"></stop><stop offset=".941" stop-color="#fff176" stop-opacity="0"></stop></radialGradient><path d="M76.11 77.42c-9.09-11.7-5.02-25.05-2.79-30.37c.3-.7-.5-1.36-1.13-.93c-3.91 2.66-11.92 8.92-15.65 17.73c-5.05 11.91-4.69 17.74-1.7 24.86c1.8 4.29-.29 5.2-1.34 5.36c-1.02.16-1.96-.52-2.71-1.23a16.09 16.09 0 0 1-4.44-7.6c-.16-.62-.97-.79-1.34-.28c-2.8 3.87-4.25 10.08-4.32 14.47C40.47 113 51.68 124 65.24 124c17.09 0 29.54-18.9 19.72-34.7c-2.85-4.6-5.53-7.61-8.85-11.88z" fill="url(#IconifyId17ecdb2904d178eab8627)"></path></svg>
-                  </div>
-                  <div>
-                    <h2 class="h4 mb-3">Transformations That Last</h2>
-                    <p class="text-secondary mb-0">My programs focus on sustainable results through training, mindset, and lifestyle changes</p>
-                  </div>
-                </div>
-              </div>
+
+      <div class="product-card">
+        <div class="product-img-area">
+          <svg style="color:rgba(14,165,233,.5);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <div class="product-body">
+          <h3 class="product-title">Pre-Workout Explosion</h3>
+          <p class="product-desc">200mg caffeine. Maximum energy and focus for intense sessions.</p>
+          <div class="product-footer">
+            <span class="product-price">$39.99</span>
+            <button class="btn-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-area">
+          <svg style="color:rgba(34,197,94,.5);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <span class="product-badge-tag" style="background:#22C55E;">ESSENTIAL</span>
+        </div>
+        <div class="product-body">
+          <h3 class="product-title">Creatine Monohydrate</h3>
+          <p class="product-desc">5g per serving. Boost strength and power output.</p>
+          <div class="product-footer">
+            <span class="product-price">$29.99</span>
+            <button class="btn-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-area">
+          <svg style="color:rgba(245,158,11,.5);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
+        </div>
+        <div class="product-body">
+          <h3 class="product-title">Fat Burner Xtreme</h3>
+          <p class="product-desc">Thermogenic formula. Boost metabolism and energy.</p>
+          <div class="product-footer">
+            <span class="product-price">$49.99</span>
+            <button class="btn-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="view-all-link">
+      <a href="/supplements" class="link-arrow">Shop All Supplements <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THE SHOP ===== -->
+<section class="section-dark">
+  <div class="container">
+    <div class="shop-header">
+      <div>
+        <div class="shop-label">
+          <span class="shop-label-line"></span>
+          <span class="shop-label-text">Premium Quality</span>
+        </div>
+        <h2 class="section-title" style="text-align:left;">THE <span class="accent">SHOP</span></h2>
+        <p style="color:#9CA3AF;margin-top:.75rem;max-width:32rem;">Top-tier supplements and fitness essentials to fuel your training and maximize your results.</p>
+      </div>
+      <a href="/supplements" class="shop-link">View All Products <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+    </div>
+
+    <div class="products-grid">
+      <div class="shop-card">
+        <div class="shop-img-area">
+          <svg style="color:rgba(220,38,38,.4);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          <span class="product-badge-tag" style="background:#DC2626;">BESTSELLER</span>
+        </div>
+        <div class="shop-card-body">
+          <h3 class="shop-card-title">WHEY PROTEIN</h3>
+          <p class="shop-card-sub">25g protein per serving</p>
+          <div class="shop-card-footer">
+            <div class="shop-price-group">
+              <span class="shop-price">$59.99</span>
+              <span class="shop-price-old">$79.99</span>
             </div>
+            <button class="btn-add"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-img-area">
+          <svg style="color:rgba(14,165,233,.4);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <div class="shop-card-body">
+          <h3 class="shop-card-title">PRE-WORKOUT</h3>
+          <p class="shop-card-sub">Maximum energy &amp; focus</p>
+          <div class="shop-card-footer">
+            <div class="shop-price-group"><span class="shop-price">$39.99</span></div>
+            <button class="btn-add"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-img-area">
+          <svg style="color:rgba(34,197,94,.4);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <span class="product-badge-tag" style="background:#22C55E;">ESSENTIAL</span>
+        </div>
+        <div class="shop-card-body">
+          <h3 class="shop-card-title">CREATINE</h3>
+          <p class="shop-card-sub">5g monohydrate</p>
+          <div class="shop-card-footer">
+            <div class="shop-price-group"><span class="shop-price">$29.99</span></div>
+            <button class="btn-add"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-img-area">
+          <svg style="color:rgba(245,158,11,.4);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
+        </div>
+        <div class="shop-card-body">
+          <h3 class="shop-card-title">FAT BURNER</h3>
+          <p class="shop-card-sub">Thermogenic formula</p>
+          <div class="shop-card-footer">
+            <div class="shop-price-group"><span class="shop-price">$49.99</span></div>
+            <button class="btn-add"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></button>
           </div>
         </div>
       </div>
@@ -165,374 +539,249 @@
   </div>
 </section>
 
+<!-- ===== CLOTHING ===== -->
+<section id="clothing">
+  <div class="clothing-bg"></div>
+  <div class="container" style="position:relative;z-index:10;">
+    <div class="shop-header">
+      <div>
+        <div class="shop-label">
+          <span class="shop-label-line"></span>
+          <span class="shop-label-text">New Collection</span>
+        </div>
+        <h2 class="section-title" style="text-align:left;">ELEVEN <span class="accent">CLOTHING</span></h2>
+        <p style="color:#9CA3AF;margin-top:.75rem;max-width:32rem;">Premium fitness apparel designed for athletes who demand style, comfort, and performance.</p>
+      </div>
+      <a href="/merch" class="shop-link">Shop Full Collection <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+    </div>
 
+    <div class="products-grid">
+      <!-- Hoodie -->
+      <div class="clothing-card">
+        <div class="clothing-img-area">
+          <div class="clothing-placeholder">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+          </div>
+          <span class="product-badge-tag" style="background:#fff;color:#000;">NEW</span>
+        </div>
+        <div class="clothing-body">
+          <h3 class="clothing-title">ELEVEN HOODIE</h3>
+          <p class="clothing-sub">Premium cotton blend</p>
+          <div class="clothing-footer">
+            <span class="shop-price">$79.99</span>
+            <button class="btn-add"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></button>
+          </div>
+          <div class="sizes">
+            <button class="size-btn">S</button>
+            <button class="size-btn">M</button>
+            <button class="size-btn">L</button>
+            <button class="size-btn">XL</button>
+          </div>
+        </div>
+      </div>
 
+      <!-- Tank -->
+      <div class="clothing-card">
+        <div class="clothing-img-area">
+          <div class="clothing-placeholder" style="width:6rem;height:8rem;">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+          </div>
+        </div>
+        <div class="clothing-body">
+          <h3 class="clothing-title">TRAINING TANK</h3>
+          <p class="clothing-sub">Breathable mesh</p>
+          <div class="clothing-footer">
+            <span class="shop-price">$34.99</span>
+            <button class="btn-add"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></button>
+          </div>
+          <div class="sizes">
+            <button class="size-btn">S</button>
+            <button class="size-btn">M</button>
+            <button class="size-btn">L</button>
+            <button class="size-btn">XL</button>
+          </div>
+        </div>
+      </div>
 
-<!-- About Section 2 --->
-<section class="py-3 py-md-5">
+      <!-- Tee -->
+      <div class="clothing-card">
+        <div class="clothing-img-area">
+          <div class="clothing-placeholder" style="width:7rem;height:8.5rem;">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+          </div>
+          <span class="product-badge-tag" style="background:#DC2626;">POPULAR</span>
+        </div>
+        <div class="clothing-body">
+          <h3 class="clothing-title">ELEVEN TEE</h3>
+          <p class="clothing-sub">Classic fit cotton</p>
+          <div class="clothing-footer">
+            <span class="shop-price">$39.99</span>
+            <button class="btn-add"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></button>
+          </div>
+          <div class="sizes">
+            <button class="size-btn">S</button>
+            <button class="size-btn">M</button>
+            <button class="size-btn">L</button>
+            <button class="size-btn">XL</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shaker -->
+      <div class="clothing-card">
+        <div class="clothing-img-area">
+          <svg style="width:7rem;height:7rem;color:rgba(255,255,255,.3);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+        </div>
+        <div class="clothing-body">
+          <h3 class="clothing-title">SHAKER BOTTLE</h3>
+          <p class="clothing-sub">BPA-free, leak-proof</p>
+          <div class="clothing-footer">
+            <span class="shop-price">$14.99</span>
+            <button class="btn-add"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="/merch" class="btn-primary" style="font-size:1rem;">
+        <span>Shop Full Collection</span>
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="cta">
+  <div class="cta-blur1"></div>
+  <div class="cta-blur2"></div>
+  <div class="cta-pattern"></div>
   <div class="container">
-    <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center flex-column-reverse flex-md-row ">
-      
-      <div class="col-12 col-lg-6 col-xl-7">
-        <div class="row justify-content-xl-center">
-          <div class="col-12 col-xl-11">
-            <h2 class="mb-3">What I Offer</h2>
-            <p class="lead fs-4 text-secondary mb-3">I design personalized training and diet plans to help you build strength, lose fat, and sculpt the body you want. Every program is tailored to your goals and lifestyle.</p>
-            <p class="mb-5">At Ethio Dance Fitness, I also provide one-on-one posing sessions and full transformation programs that push you to your physical and mental best. Online coaching coming soon.</p>
-            <div class="row gy-4 gy-md-0 gx-xxl-5X">
-              <div class="col-12 col-md-6">
-                <div class="d-flex">
-                  <div class="me-4 text-primary">
-                    <?xml version="1.0" encoding="utf-8"?>
-<!-- License: PD. Made by CFPB: https://github.com/cfpb/design-system -->
-<svg fill="#000000" width="100px" height="100px" viewBox="-3 0 19 19" xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg"><path d="M12.517 12.834v1.9a1.27 1.27 0 0 1-1.267 1.267h-9.5a1.27 1.27 0 0 1-1.267-1.267v-1.9A3.176 3.176 0 0 1 3.65 9.667h5.7a3.176 3.176 0 0 1 3.167 3.167zM3.264 5.48A3.236 3.236 0 1 1 6.5 8.717a3.236 3.236 0 0 1-3.236-3.236z"/></svg>
-                  </div>
-                  <div>
-                    <h2 class="h4 mb-3">Personalized Coaching</h2>
-                    <p class="text-secondary mb-0">Every plan is customized for your level, goals, and schedule.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="d-flex">
-                  <div class="me-4 text-primary">
-                    <?xml version="1.0" encoding="utf-8"?>
-<!-- License: MIT. Made by designmodo: https://github.com/designmodo/Flat-UI -->
-<svg width="100px" height="100px" viewBox="-8 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="#2980B9" d="M27 0H0l30 60h27L27 0z"/><path fill="#3498DB" d="M57 0h27L54 60H27L57 0z"/><path fill="#F1C40E" d="M42 40c16.568 0 30 13.434 30 30 0 16.568-13.432 30-30 30-16.567 0-30-13.432-30-30s13.431-30 30-30z"/><path fill="#D8B00C" d="M42 46c-13.255 0-24 10.745-24 24s10.745 24 24 24 24-10.745 24-24-10.745-24-24-24zm0 46c-12.149 0-22-9.85-22-22 0-12.148 9.851-22 22-22 12.15 0 22 9.852 22 22 0 12.15-9.85 22-22 22z"/><path fill="#CDA70C" d="M16.377 85.609c3.935 6.443 10.234 11.283 17.69 13.322L51 82l-5-19-6.004-1.011-23.619 23.62z"/><path fill="#B8960A" d="M39.173 93.829l1.853-1.854c-8.243-.359-15.308-5.256-18.761-12.254l-1.486 1.485c3.607 6.817 10.398 11.683 18.394 12.623z"/><path fill="#FFF55C" d="M45.988 81.98V65.973h-5.992V61.99c.888.021 1.747.09 2.574-.075 1.021-.203 1.312-.278 1.949-.712 1.109-.749 1.373-1.23 1.769-1.926.558-.979.507-1.311.649-2.279h4.068V81.98h-5.017z"/></svg>
-                  </div>
-                  <div>
-                    <h2 class="h4 mb-3">Competition Posing</h2>
-                    <p class="text-secondary mb-0">Learn the art of stage presentation and posing from a Mr. Ethiopia champion.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="cta-content">
+      <div class="cta-badge"><span>Limited Time Offer</span></div>
+      <h2 class="cta-title">READY TO<br><span class="black">TRANSFORM?</span></h2>
+      <p class="cta-desc">Don't wait for tomorrow. Your transformation starts today. Join 500+ clients who've achieved their dream physique with FitYab coaching.</p>
+      <div class="cta-buttons">
+        <a href="/online-coaching" class="btn-cta-white">
+          <span>Start Now</span>
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="/contact" class="btn-cta-dark">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          <span>Ask a Question</span>
+        </a>
       </div>
-      <div class="col-12 col-lg-6 col-xl-5">
-        <img class="img-fluid rounded" loading="lazy" src="assets/img/yabsera about me.PNG" alt="About 1">
+      <div class="cta-trust">
+        <span class="trust-item"><svg class="trust-icon" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Secure Checkout</span>
+        <span class="trust-item"><svg class="trust-icon" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> 30-Day Guarantee</span>
+        <span class="trust-item"><svg class="trust-icon" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Cancel Anytime</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- About Section 3 --->
-<section class="py-3 py-md-5">
+<!-- ===== FOOTER ===== -->
+<footer id="global-footer">
   <div class="container">
-    <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-      <div class="col-12 col-lg-6 col-xl-5">
-        <img class="img-fluid rounded" loading="lazy" src="assets/img/yabsera about me.PNG" alt="About 1">
-      </div>
-      <div class="col-12 col-lg-6 col-xl-7">
-        <div class="row justify-content-xl-center">
-          <div class="col-12 col-xl-11">
-            <h2 class="mb-3">Result That Speak</h2>
-            <p class="lead fs-4 text-secondary mb-3">Every transformation tells a story of focus, effort, and consistency. My clients don’t just change their bodies - they change how they live and think.</p>
-            <p class="mb-5">Whether your goal is muscle gain, fat loss, or competition prep, I’ll guide you through every stage until you see real, lasting results.</p>
-            <div class="row gy-4 gy-md-0 gx-xxl-5X">
-              <div class="col-12 col-md-6">
-                <div class="d-flex">
-                  <div class="me-4 text-primary">
-                   <?xml version="1.0" encoding="utf-8"?>
-<!-- License: PD. Made by Mary Akveo: https://maryakveo.com/ -->
-<svg fill="#000000" width="100px" height="100px" viewBox="0 0 24 24" id="camera" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><path id="secondary" d="M18,7H14l.5-2h3Zm-6,4a2,2,0,1,0,2,2A2,2,0,0,0,12,11Z" style="fill: none; stroke: rgb(44, 169, 188); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><path id="primary" d="M11,7l-.72-1.45A1,1,0,0,0,9.38,5H4A1,1,0,0,0,3,6V18a1,1,0,0,0,1,1H20a1,1,0,0,0,1-1V8a1,1,0,0,0-1-1Z" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>
-                  </div>
-                  <div>
-                    <h2 class="h4 mb-3">Client Transformations</h2>
-                    <p class="text-secondary mb-0">Before-and-after results that prove what dedication can achieve.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="d-flex">
-                  <div class="me-4 text-primary">
-                    <?xml version="1.0" encoding="utf-8"?>
-<!-- License: MIT. Made by Kenan Gundogan: https://github.com/kenangundogan/fontisto -->
-<svg fill="#000000" width="100px" height="100px" viewBox="0 -2 28 28" xmlns="http://www.w3.org/2000/svg"><path d="m8.606 11.366 2.16-7.008 4.619 10.497 1.022-3.546h11.12c.268-.866.423-1.863.423-2.895 0-.42-.026-.833-.075-1.239l.005.049c-.281-2.127-1.432-6.101-6.094-7.014-.583-.122-1.258-.197-1.948-.208h-.009-.137c-2.266.04-4.295 1.019-5.722 2.563l-.005.005c-1.433-1.548-3.462-2.526-5.72-2.568h-.008-.139c-.699.011-1.373.086-2.027.22l.07-.012c-3.344.724-5.852 3.544-6.093 6.99l-.001.024c-.032.309-.051.669-.051 1.032 0 1.11.171 2.179.489 3.184l-.02-.075z"/><path d="m17.647 12.955-1.935 6.742-4.674-10.619-1.209 3.936h-8.742c1.489 3.296 4.96 7.432 12.874 10.986 8.015-3.6 11.49-7.741 12.96-11.04z"/></svg>
-                  </div>
-                  <div>
-                    <h2 class="h4 mb-3">Lifestyle Change</h2>
-                    <p class="text-secondary mb-0">Training built for longevity, strength, and everyday confidence.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <a href="/"><img src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/047625f7-6c76-422e-df4b-9de3f23a0f00/publicContain" alt="FitYab" class="footer-logo" /></a>
+          <p class="footer-desc">Transform your body with professional coaching, premium supplements, and fitness gear. Your journey to a stronger, healthier you starts here.</p>
+          <div class="social-links">
+            <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+            <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></a>
+            <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
+        <div>
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="/about">About</a></li>
+            <li><a href="/online-coaching">Online Coaching</a></li>
+            <li><a href="/supplements">Supplements</a></li>
+            <li><a href="/merch">Merch Store</a></li>
+            <li><a href="/transformation-results">Transformations</a></li>
+            <li><a href="/gallery">Gallery</a></li>
+          </ul>
+        </div>
 
-<!-- Marquee -->
-<div class="marquee-container">
-  <div class="marquee">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHTyh15jFu7I16KoxGe8x51qZ--_VKDS02ww&s" />
-    <img src="https://ethiodancefitness.com/wp-content/uploads/2025/05/e3.webp" />
-    <img src="assets/img/logo.png" />
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHTyh15jFu7I16KoxGe8x51qZ--_VKDS02ww&s" />
-    <img src="https://ethiodancefitness.com/wp-content/uploads/2025/05/e3.webp" />
-    <img src="assets/img/logo.png" />  
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHTyh15jFu7I16KoxGe8x51qZ--_VKDS02ww&s" />
-  </div>
-</div>
-
-<section class="py-3 py-md-5">
-  <div class="container">
-    <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-      <div class="col-12 col-lg-6 col-xl-5">
-        <img class="img-fluid rounded" loading="lazy" src="assets/img/about.jpg" alt="About 1">
-      </div>
-      <div class="col-12 col-lg-6 col-xl-7">
-        <div class="row justify-content-xl-center">
-          <div class="col-12 col-xl-11">
-            <h2 class="mb-3">Start Your Transformation Today</h2>
-            <p class="lead fs-4 text-secondary mb-3">Join my training program and take the first step toward building the body and mindset you’ve always wanted. Strength, discipline, and results - no shortcuts.</p>
-            <button type="button" class="btn btn-large btn-outline-dark" style="margin-top: 15px;">Danger</button>
-
+        <div>
+          <h4 class="footer-col-title">Contact</h4>
+          <div class="contact-item">
+            <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>info@finityab.com</span>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="position-relative" style="height: 100vh;">
-  <!-- Background Image -->
-  <img src="assets/img/yabsera edit.jpg" 
-       class="w-100 h-100 object-fit-cover" 
-       alt="Background" 
-       style="object-position: center;">
-
-  <!-- Card Overlay -->
-  <div class="position-absolute top-50 start-0 translate-middle-y ms-5">
-    <div class="card shadow-lg" style="max-width: 400px;">
-      <div class="card-body p-4">
-        <h3 class="card-title fw-bold mb-3">Train With a Champion</h3>
-        <p class="card-text text-secondary mb-4">
-          As Mr. Ethiopia 2025 and a certified personal trainer, I bring proven methods that shape world-class physiques. 
-          Learn the techniques that build strength, power, and discipline.
-        </p>
-        <a href="#" class="btn btn-dark">Start Training</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="testimonials py-5 bg-light">
-  <div class="container">
-    <!-- Desktop layout -->
-    <div class="row d-none d-md-flex text-center">
-      <div class="col-md-4">
-        <div class="p-4">
-          <p class="fs-1 text-primary">“</p>
-          <p>Thank you for helping me with your amazing Mass Gain Extreme Training Program and for all the motivation you have given me on Instagram!</p>
-          <h6 class="fw-bold mt-3">— Mathias Leander Godø Dyb</h6>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="p-4">
-          <p class="fs-1 text-primary">“</p>
-          <p>Your program has helped me achieve this and more because I continue to grow all the way around the board.</p>
-          <h6 class="fw-bold mt-3">— Frank Hieden</h6>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="p-4">
-          <p class="fs-1 text-primary">“</p>
-          <p>Throughout my transformation not only did I notice an increase in strength, but also in size and I couldn’t be any happier with the results.</p>
-          <h6 class="fw-bold mt-3">— Michael Schenken</h6>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile carousel -->
-    <div id="testimonialCarousel" class="carousel slide d-md-none" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-
-      <div class="carousel-inner text-center">
-        <div class="carousel-item active">
-          <div class="p-4">
-            <p class="fs-1 text-primary">“</p>
-            <p>Thank you for helping me with your amazing Mass Gain Extreme Training Program and for all the motivation you have given me on Instagram!</p>
-            <h6 class="fw-bold mt-3">— Mathias Leander Godø Dyb</h6>
+          <div class="contact-item">
+            <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <span>+1 (555) 123-4567</span>
           </div>
-        </div>
-        <div class="carousel-item">
-          <div class="p-4">
-            <p class="fs-1 text-primary">“</p>
-            <p>Your program has helped me achieve this and more because I continue to grow all the way around the board.</p>
-            <h6 class="fw-bold mt-3">— Frank Hieden</h6>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="p-4">
-            <p class="fs-1 text-primary">“</p>
-            <p>Throughout my transformation not only did I notice an increase in strength, but also in size and I couldn’t be any happier with the results.</p>
-            <h6 class="fw-bold mt-3">— Michael Schenken</h6>
-          </div>
+          <a href="/contact" class="btn-primary" style="display:inline-block;margin-top:.5rem;font-size:.9rem;padding:.5rem 1.5rem;">Get In Touch</a>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-
-
-
-
-<footer class="bg-dark text-light pt-5 pb-4" id="footer">
-  <div class="container text-center text-md-start">
-    <div class="row text-center text-md-start">
-
-      <!-- About -->
-      <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
-        <h5 class="text-uppercase mb-4 fw-bold text-warning">fityab.com</h5>
-        <p>
-          Certified personal trainer and bodybuilder dedicated to helping athletes and fitness enthusiasts unlock
-          their full potential — through discipline, consistency, and proven training methods.
-        </p>
-      </div>
-
-      <!-- Training Programs -->
-      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-        <h5 class="text-uppercase mb-4 fw-bold text-warning">Programs</h5>
-        <p><a href="#" class="text-light text-decoration-none">Muscle Building</a></p>
-        <p><a href="#" class="text-light text-decoration-none">Fat Loss</a></p>
-        <p><a href="#" class="text-light text-decoration-none">Online Coaching</a></p>
-        <p><a href="#" class="text-light text-decoration-none">Competition Prep</a></p>
-      </div>
-
-      <!-- Resources -->
-      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-        <h5 class="text-uppercase mb-4 fw-bold text-warning">Resources</h5>
-        <p><a href="#" class="text-light text-decoration-none">Workout Plans</a></p>
-        <p><a href="#" class="text-light text-decoration-none">Nutrition Guides</a></p>
-        <p><a href="#" class="text-light text-decoration-none">Transformation Gallery</a></p>
-        <p><a href="#" class="text-light text-decoration-none">Merch Store</a></p>
-      </div>
-
-      <!-- Contact -->
-      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-        <h5 class="text-uppercase mb-4 fw-bold text-warning">Contact</h5>
-        <p><i class="bi bi-geo-alt-fill me-2"></i> Addis Ababa, Ethiopia</p>
-        <p><i class="bi bi-envelope-fill me-2"></i> train@mr-ethiopia.com</p>
-        <p><i class="bi bi-phone-fill me-2"></i> +251 900 000 000</p>
-      </div>
-    </div>
-
-    <hr class="mb-4 mt-4">
-
-    <!-- Copyright & Socials -->
-    <div class="row align-items-center">
-      <div class="col-md-7 col-lg-8">
-        <p class="text-center text-md-start mb-0">
-          © 2025 <strong>yabfit.com</strong>  Built by strength. Driven by purpose.
-        </p>
-      </div>
-
-      <div class="col-md-5 col-lg-4">
-        <div class="text-center text-md-end">
-          <a href="#" class="text-light me-4"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="text-light me-4"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="text-light me-4"><i class="bi bi-youtube"></i></a>
-          <a href="#" class="text-light me-4"><i class="bi bi-telegram"></i></a>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 FitYab. All rights reserved.</p>
+        <div class="footer-policy-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Shipping Policy</a>
         </div>
       </div>
     </div>
   </div>
 </footer>
 
-
-
-<!-- </div> -->
-
-    
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue-marquee-slider@1.1.3/dist/vue-marquee-slider.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
-
-
-    <script>
-  window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) { // adjust 50 to the point you want
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
+<script>
+  // Mobile Menu Toggle
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
   });
 
-  window.addEventListener('scroll', function() {
-  const navbar = document.getElementById('navbar');
-  if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
+  // Chat Widget - simple send message
+  const chatSendBtn = document.getElementById('chatSendBtn');
+  const chatInputField = document.getElementById('chatInputField');
+  const chatMessages = document.getElementById('chatMessages');
+
+  function sendMessage() {
+    const text = chatInputField.value.trim();
+    if (!text) return;
+
+    // User message
+    const userMsg = document.createElement('div');
+    userMsg.className = 'chat-msg user';
+    userMsg.innerHTML = `
+      <div class="msg-avatar" style="background:#DC2626;">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+      </div>
+      <div class="msg-bubble user-msg">${text}</div>`;
+    chatMessages.appendChild(userMsg);
+    chatInputField.value = '';
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // AI response placeholder
+    setTimeout(() => {
+      const aiMsg = document.createElement('div');
+      aiMsg.className = 'chat-msg';
+      aiMsg.innerHTML = `
+        <div class="msg-avatar" style="background:#0EA5E9;">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <div class="msg-bubble ai">Thanks for your question! Our full AI chat is coming soon. In the meantime, check out our coaching programs for personalized guidance! 💪</div>`;
+      chatMessages.appendChild(aiMsg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 800);
   }
-});
 
-const navbarCollapse = document.querySelector('.navbar-collapse');
-  const overlay = document.getElementById('nav-overlay');
-  const toggler = document.querySelector('.navbar-toggler');
-  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-
-  
-
-
-
-
- 
-  // Toggle overlay when navbar opens/closes
-navbarCollapse.addEventListener('show.bs.collapse', () => {
-  overlay.classList.add('active');
-});
-
-navbarCollapse.addEventListener('hide.bs.collapse', () => {
-  overlay.classList.remove('active');
-});
-
-// Clicking overlay closes menu
-overlay.addEventListener('click', () => {
-  const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: true });
-  overlay.classList.remove('active');
-});
-
-// Clicking nav link closes menu, but NOT dropdown toggles
-navLinks.forEach(link => {
-  if (!link.classList.contains('dropdown-toggle')) {
-    link.addEventListener('click', () => {
-      const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: true });
-      overlay.classList.remove('active');
-    });
-  }
-});
-
-// Dropdown toggle open/close manually
-const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
-dropdownToggles.forEach(toggle => {
-  const dropdown = new bootstrap.Dropdown(toggle, { autoClose: false });
-
-  toggle.addEventListener('click', (e) => {
-    e.preventDefault();          // Prevent default link behavior
-    e.stopPropagation();         // Prevent navbar collapse
-    dropdown.toggle();           // Manually open/close
+  chatSendBtn.addEventListener('click', sendMessage);
+  chatInputField.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
   });
-});
-
-   
 </script>
-  </body>
+</body>
 </html>
-
-
