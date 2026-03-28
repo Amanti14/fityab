@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <title>Supplements Shop - FitYab</title>
+</head>
+<body>
+
+<!-- ═══ CART OVERLAY + DRAWER ═══ -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <div>
+      <div class="cart-head-title">Your Cart</div>
+    </div>
+    <button class="cart-close" onclick="closeCart()">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+      <p>Your cart is empty</p>
+      <small>Add some supplements to get started</small>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <strong id="cartSubtotal">$0.00</strong>
+    </div>
+    <div class="cart-shipping">
+      <span>Shipping</span>
+      <em id="cartShipping">FREE on orders over $75</em>
+    </div>
+    <div class="cart-total-row">
+      <span>Total</span>
+      <strong id="cartTotal">$0.00</strong>
+    </div>
+    <button class="btn-checkout" onclick="alert('Checkout coming soon! 🎉')">
+      <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+      Secure Checkout
+    </button>
+    <button class="btn-continue" onclick="closeCart()">Continue Shopping</button>
+    <div class="cart-promo">
+      <div class="cart-promo-row">
+        <input class="promo-input" id="promoInput" placeholder="Promo code (try: FITYAB10)" />
+        <button class="btn-promo" onclick="applyPromo()">Apply</button>
+      </div>
+      <div class="promo-success" id="promoSuccess">✓ Code applied! 10% discount added.</div>
+    </div>
+    <div class="cart-trust">
+      <div class="cart-trust-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>Secure</div>
+      <div class="cart-trust-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>30-day returns</div>
+      <div class="cart-trust-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>Free ship $75+</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PRODUCT MODAL ═══ -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleModalOverlayClick(event)">
+  <div class="modal" id="productModal">
+    <button class="modal-close" onclick="closeModal()">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-grid">
+      <div class="modal-img-side" id="modalImgSide">
+        <svg id="modalSvg" fill="none" stroke="rgba(220,38,38,.5)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+        <span class="modal-badge-lg" id="modalBadge"></span>
+      </div>
+      <div class="modal-info">
+        <div class="modal-name" id="modalName"></div>
+        <div class="modal-tagline" id="modalTagline"></div>
+        <div class="modal-rating">
+          <span class="modal-stars" id="modalStars"></span>
+          <span class="modal-rating-txt" id="modalRatingTxt"></span>
+        </div>
+        <div class="modal-price-row">
+          <span class="modal-price-now" id="modalPriceNow"></span>
+          <span class="modal-price-was" id="modalPriceWas"></span>
+          <span class="modal-save" id="modalSave" style="display:none;"></span>
+        </div>
+        <div class="modal-label">Flavor</div>
+        <div class="modal-flavors" id="modalFlavors"></div>
+        <div class="modal-label">Size</div>
+        <div class="modal-size" id="modalSizes"></div>
+        <div class="modal-qty-row">
+          <div class="modal-label" style="margin-bottom:0;">Qty</div>
+          <div class="modal-qty-ctrl">
+            <button class="modal-qty-btn" onclick="changeModalQty(-1)">−</button>
+            <span class="modal-qty-num" id="modalQtyNum">1</span>
+            <button class="modal-qty-btn" onclick="changeModalQty(1)">+</button>
+          </div>
+          <button class="btn-modal-cart" onclick="addFromModal()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            Add to Cart
+          </button>
+        </div>
+        <div class="modal-divider"></div>
+        <div class="modal-facts" id="modalFacts"></div>
+        <div class="modal-highlights" id="modalHighlights"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div class="toast" id="toast">
+  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+  <span id="toastMsg">Added to cart!</span>
+</div>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <div class="wrap">
+    <div class="hdr">
+      <a href="fityab.html" class="logo">
+        <img src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/047625f7-6c76-422e-df4b-9de3f23a0f00/publicContain" alt="FitYab"/>
+      </a>
+      <nav class="desk-nav">
+        <a href="about.html" class="nav-a">About</a>
+        <a href="online-coaching.html" class="nav-a">Online Coaching</a>
+        <a href="supplements.html" class="nav-a active">Supplements</a>
+        <a href="transformations.html" class="nav-a">Transformations</a>
+      </nav>
+      <div class="nav-right">
+        <button class="cart-icon-btn" onclick="openCart()" aria-label="Open cart">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          Cart
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <a href="online-coaching.html" class="nav-cta">
+          Coaching <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <button class="mob-btn" id="menuBtn">
+          <svg width="30" height="30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    <div class="mob-inner">
+      <a href="about.html" class="mob-a">About</a>
+      <a href="online-coaching.html" class="mob-a">Online Coaching</a>
+      <a href="supplements.html" class="mob-a active">Supplements</a>
+      <a href="transformations.html" class="mob-a">Transformations</a>
+      <button class="mob-cta" onclick="openCart()">View Cart (<span id="cartCountMob">0</span>)</button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="pill fade-up"><span class="pill-dot pulse"></span><span class="pill-txt">Lab Tested · Clinically Dosed</span></div>
+      <h1 class="hero-h1 fade-up d1">
+        PREMIUM <span class="acc">SUPPLEMENTS</span><br>
+        NO <span class="ghost">COMPROMISES</span>
+      </h1>
+      <p class="hero-p fade-up d2">Transparent labels. Clinical doses. Third-party tested for purity. Every FitYab supplement is formulated by coaches who actually use them — built for real results, not marketing hype.</p>
+      <div class="hero-badges fade-up d3">
+        <span class="hbadge"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>100% Transparent Labels</span>
+        <span class="hbadge"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>3rd-Party Lab Tested</span>
+        <span class="hbadge"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>No Proprietary Blends</span>
+        <span class="hbadge"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Free Shipping $75+</span>
+        <span class="hbadge"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>30-Day Guarantee</span>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-n">30<span class="a">+</span></div><div class="hstat-l">Lab Tests Passed</div></div>
+        <div class="hstat"><div class="hstat-n">100<span class="a">%</span></div><div class="hstat-l">Transparent</div></div>
+        <div class="hstat"><div class="hstat-n">4.9<span class="a">★</span></div><div class="hstat-l">Avg Rating</div></div>
+        <div class="hstat"><div class="hstat-n">0</div><div class="hstat-l">Prop Blends</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MAIN SHOP ═══ -->
+<section class="sec dark" id="shop">
+  <div class="wrap">
+    <div class="shop-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-box">
+          <div class="sidebar-title">Categories</div>
+          <div class="filter-group" id="filterGroup">
+            <button class="filter-btn active" onclick="filterProds('all',this)" data-filter="all">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+              All Products <span class="count">8</span>
+            </button>
+            <button class="filter-btn" onclick="filterProds('protein',this)" data-filter="protein">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+              Protein <span class="count">2</span>
+            </button>
+            <button class="filter-btn" onclick="filterProds('preworkout',this)" data-filter="preworkout">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              Pre-Workout <span class="count">2</span>
+            </button>
+            <button class="filter-btn" onclick="filterProds('recovery',this)" data-filter="recovery">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+              Recovery <span class="count">2</span>
+            </button>
+            <button class="filter-btn" onclick="filterProds('fatloss',this)" data-filter="fatloss">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
+              Fat Loss <span class="count">2</span>
+            </button>
+          </div>
+        </div>
+        <div class="sidebar-box">
+          <div class="sidebar-title">Price Range</div>
+          <div class="filter-group">
+            <button class="filter-btn" onclick="filterByPrice('all',this)">All Prices</button>
+            <button class="filter-btn" onclick="filterByPrice('under30',this)">Under $30</button>
+            <button class="filter-btn" onclick="filterByPrice('30to50',this)">$30 – $50</button>
+            <button class="filter-btn" onclick="filterByPrice('over50',this)">Over $50</button>
+          </div>
+        </div>
+        <div class="sidebar-box" style="background:linear-gradient(135deg,rgba(220,38,38,.08),transparent);border-color:rgba(220,38,38,.2);">
+          <div style="font-family:var(--h);font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">Bundle & Save</div>
+          <p style="color:var(--muted);font-size:.82rem;line-height:1.6;margin-bottom:.9rem;">Buy our curated stacks and save up to 25% vs buying individually.</p>
+          <a href="#bundles" style="display:flex;align-items:center;gap:.4rem;color:var(--red);font-weight:700;font-size:.85rem;transition:gap .2s;" onmouseover="this.style.gap='.7rem'" onmouseout="this.style.gap='.4rem'">
+            See Bundles <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </aside>
+
+      <!-- PRODUCTS -->
+      <div>
+        <div class="sort-bar">
+          <div class="results-count">Showing <span id="resultsCount">8</span> products</div>
+          <select class="sort-select" id="sortSelect" onchange="sortProducts(this.value)">
+            <option value="featured">Sort: Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+            <option value="name">Name A–Z</option>
+          </select>
+        </div>
+        <div class="prod-grid" id="prodGrid">
+          <!-- Products rendered by JS -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BUNDLES ═══ -->
+<section class="sec mid" id="bundles">
+  <div class="wrap">
+    <div class="tc mb3">
+      <div class="pill" style="display:inline-flex;margin-bottom:1rem;"><span class="pill-dot pulse"></span><span class="pill-txt">Save More</span></div>
+      <h2 class="stitle">STACK & <span class="a">SAVE UP TO 25%</span></h2>
+      <p class="ssub">Our coaches built these bundles for maximum synergy. Better results at a better price.</p>
+    </div>
+    <div class="g3">
+      <!-- Bundle 1 -->
+      <div class="bundle-card">
+        <div class="bundle-icons">
+          <div class="bundle-icon" style="background:rgba(220,38,38,.1);"><svg width="24" height="24" fill="none" stroke="#DC2626" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></div>
+          <span class="bundle-plus">+</span>
+          <div class="bundle-icon" style="background:rgba(14,165,233,.1);"><svg width="24" height="24" fill="none" stroke="#0EA5E9" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+          <span class="bundle-plus">+</span>
+          <div class="bundle-icon" style="background:rgba(34,197,94,.1);"><svg width="24" height="24" fill="none" stroke="#22C55E" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+        </div>
+        <div class="bundle-name">Muscle Building Stack</div>
+        <div class="bundle-items">Whey Protein Isolate + Pre-Workout Explosion + Creatine Monohydrate</div>
+        <div class="bundle-saving"><svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Save $20 vs buying individually</div>
+        <div class="bundle-price-row">
+          <span class="bundle-price-now">$109.99</span>
+          <span class="bundle-price-was">$129.97</span>
+        </div>
+        <button class="btn-bundle" onclick="addBundle([0,2,4])">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          Add Bundle to Cart
+        </button>
+      </div>
+      <!-- Bundle 2 BEST VALUE -->
+      <div class="bundle-card featured">
+        <div style="display:inline-flex;align-items:center;gap:.4rem;background:var(--red);color:#fff;font-size:.7rem;font-weight:700;padding:.2rem .8rem;border-radius:9999px;margin-bottom:.75rem;letter-spacing:.06em;">BEST VALUE</div>
+        <div class="bundle-icons">
+          <div class="bundle-icon" style="background:rgba(245,158,11,.1);"><svg width="24" height="24" fill="none" stroke="#F59E0B" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></div>
+          <span class="bundle-plus">+</span>
+          <div class="bundle-icon" style="background:rgba(14,165,233,.1);"><svg width="24" height="24" fill="none" stroke="#0EA5E9" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+          <span class="bundle-plus">+</span>
+          <div class="bundle-icon" style="background:rgba(34,197,94,.1);"><svg width="24" height="24" fill="none" stroke="#22C55E" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+        </div>
+        <div class="bundle-name">Fat Loss Stack</div>
+        <div class="bundle-items">Fat Burner Xtreme + Pre-Workout Explosion + EAA + BCAA Recovery</div>
+        <div class="bundle-saving"><svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Save $35 vs buying individually</div>
+        <div class="bundle-price-row">
+          <span class="bundle-price-now">$99.99</span>
+          <span class="bundle-price-was">$134.97</span>
+        </div>
+        <button class="btn-bundle" onclick="addBundle([6,2,5])">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          Add Bundle to Cart
+        </button>
+      </div>
+      <!-- Bundle 3 -->
+      <div class="bundle-card">
+        <div class="bundle-icons">
+          <div class="bundle-icon" style="background:rgba(220,38,38,.1);"><svg width="24" height="24" fill="none" stroke="#DC2626" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></div>
+          <span class="bundle-plus">+</span>
+          <div class="bundle-icon" style="background:rgba(220,38,38,.1);"><svg width="24" height="24" fill="none" stroke="#DC2626" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></div>
+          <span class="bundle-plus">+</span>
+          <div class="bundle-icon" style="background:rgba(245,158,11,.1);"><svg width="24" height="24" fill="none" stroke="#F59E0B" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg></div>
+        </div>
+        <div class="bundle-name">Competition Stack</div>
+        <div class="bundle-items">Whey Protein + Micellar Casein + Fat Burner + CLA Complex + Pre-Workout</div>
+        <div class="bundle-saving"><svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Save $40 vs buying individually</div>
+        <div class="bundle-price-row">
+          <span class="bundle-price-now">$179.99</span>
+          <span class="bundle-price-was">$219.95</span>
+        </div>
+        <button class="btn-bundle" onclick="addBundle([0,1,6,7,2])">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          Add Bundle to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY FITYAB SUPPS ═══ -->
+<section class="sec dark">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <div class="eyebrow"><span class="eline"></span><span class="etxt">Our Promise</span></div>
+        <h2 class="stitle mb2">SUPPLEMENTS THAT <span class="a">ACTUALLY WORK</span></h2>
+        <p class="ssub mb3">The supplement industry is full of underdosed, over-hyped products. We built our line to be different from the ground up.</p>
+        <div class="wcard">
+          <div class="wico"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+          <div><div class="wtitle">Third-Party Lab Tested</div><div class="wdesc">Every batch is independently tested for purity, potency, and absence of banned substances before it ships. Certificates available on request.</div></div>
+        </div>
+        <div class="wcard">
+          <div class="wico"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></div>
+          <div><div class="wtitle">Fully Transparent Labels</div><div class="wdesc">No proprietary blends. Every ingredient, every dose, clearly listed. You know exactly what you're putting into your body — and why it's there.</div></div>
+        </div>
+        <div class="wcard">
+          <div class="wico"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+          <div><div class="wtitle">Clinical Effective Doses</div><div class="wdesc">Ingredients at doses shown to work in clinical studies — not the trace amounts used to put a name on the label. Every scoop earns its place.</div></div>
+        </div>
+        <div class="wcard">
+          <div class="wico"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+          <div><div class="wtitle">Made by Athletes, for Athletes</div><div class="wdesc">Our coaches formulated every product. They use these supplements daily in their own training — because they wouldn't recommend anything they don't believe in.</div></div>
+        </div>
+      </div>
+      <div>
+        <!-- Guarantee box -->
+        <div style="background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(34,197,94,.02));border:1px solid rgba(34,197,94,.2);border-radius:1.2rem;padding:2.5rem;text-align:center;margin-bottom:1.5rem;">
+          <div style="width:4rem;height:4rem;background:rgba(34,197,94,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+            <svg width="28" height="28" fill="none" stroke="#22C55E" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <div style="font-family:var(--h);font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:.5rem;">30-Day Guarantee</div>
+          <p style="color:var(--muted);font-size:.9rem;line-height:1.7;">Not happy with your results? Return any product within 30 days for a full refund — no questions, no hassle. We stand behind every product we make.</p>
+        </div>
+        <!-- Stats -->
+        <div class="g2" style="gap:1rem;">
+          <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:.75rem;padding:1.3rem;text-align:center;">
+            <div style="font-family:var(--h);font-size:2rem;font-weight:700;color:var(--red);">500+</div>
+            <div style="color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem;">Happy Athletes</div>
+          </div>
+          <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:.75rem;padding:1.3rem;text-align:center;">
+            <div style="font-family:var(--h);font-size:2rem;font-weight:700;color:var(--red);">4.9★</div>
+            <div style="color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem;">Average Rating</div>
+          </div>
+          <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:.75rem;padding:1.3rem;text-align:center;">
+            <div style="font-family:var(--h);font-size:2rem;font-weight:700;color:var(--red);">0%</div>
+            <div style="color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem;">Return Rate</div>
+          </div>
+          <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:.75rem;padding:1.3rem;text-align:center;">
+            <div style="font-family:var(--h);font-size:2rem;font-weight:700;color:var(--red);">30+</div>
+            <div style="color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem;">Lab Certifications</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REVIEWS ═══ -->
+<section class="sec mid">
+  <div class="wrap">
+    <div class="tc mb3">
+      <div class="pill" style="display:inline-flex;margin-bottom:1rem;"><span class="pill-dot pulse"></span><span class="pill-txt">Customer Reviews</span></div>
+      <h2 class="stitle">WHAT ATHLETES <span class="a">SAY</span></h2>
+    </div>
+    <div class="g3">
+      <div class="review-card">
+        <div class="rev-header"><div><div class="rev-name">Marcus T.</div><div class="rev-date">March 2026</div></div><div style="background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.2);color:var(--red);font-size:.68rem;font-weight:700;padding:.18rem .6rem;border-radius:9999px;">Verified</div></div>
+        <div class="rev-product">Whey Protein Isolate</div>
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">"Best protein I've ever used. Mixes instantly, tastes incredible, and the macros are exactly what's on the label. I've tried dozens of brands — FitYab is the one I keep coming back to."</p>
+        <div class="rev-verified"><svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified Purchase</div>
+      </div>
+      <div class="review-card">
+        <div class="rev-header"><div><div class="rev-name">Jordan K.</div><div class="rev-date">February 2026</div></div><div style="background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.2);color:var(--red);font-size:.68rem;font-weight:700;padding:.18rem .6rem;border-radius:9999px;">Verified</div></div>
+        <div class="rev-product">Pre-Workout Explosion</div>
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">"The pre-workout is absolutely dialed. No crash, no jitters — just clean, sustained energy for the whole session. The pump is insane and the focus is unreal. Nothing else comes close."</p>
+        <div class="rev-verified"><svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified Purchase</div>
+      </div>
+      <div class="review-card">
+        <div class="rev-header"><div><div class="rev-name">Sarah M.</div><div class="rev-date">January 2026</div></div><div style="background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.2);color:var(--red);font-size:.68rem;font-weight:700;padding:.18rem .6rem;border-radius:9999px;">Verified</div></div>
+        <div class="rev-product">Creatine Monohydrate</div>
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">"Simple, effective, and affordable. Added 5% to my main lifts within 3 weeks. Pharmaceutical grade creatine at a price that doesn't break the bank. Exactly what you want from a creatine product."</p>
+        <div class="rev-verified"><svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified Purchase</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="ctaband">
+  <div class="wrap">
+    <div class="ctainner">
+      <h2 class="ctah">FUEL YOUR <span>TRANSFORMATION</span></h2>
+      <p class="ctap">Free shipping on orders over $75. 30-day money-back guarantee. Bundle with coaching and save an extra 20%.</p>
+      <div class="ctabtns">
+        <button class="btn-cta-w" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
+          Shop All Supplements <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </button>
+        <a href="online-coaching.html" class="btn-cta-d">Bundle with Coaching — Save 20%</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="wrap">
+    <div class="fwrap">
+      <div class="fgrid">
+        <div>
+          <a href="fityab.html"><img src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/047625f7-6c76-422e-df4b-9de3f23a0f00/publicContain" alt="FitYab" class="flogo"/></a>
+          <p class="fdesc">Transform your body with professional coaching, premium supplements, and elite fitness gear. Your journey to a stronger, healthier you starts here.</p>
+          <div class="socrow">
+            <a href="#" class="socbtn"><svg viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+            <a href="#" class="socbtn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a href="#" class="socbtn"><svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <div class="fcoltitle">Pages</div>
+          <div class="flinks">
+            <a href="about.html">About FitYab</a>
+            <a href="online-coaching.html">Online Coaching</a>
+            <a href="supplements.html">Supplements</a>
+            <a href="transformations.html">Transformations</a>
+            <a href="fityab.html">Home</a>
+          </div>
+        </div>
+        <div>
+          <div class="fcoltitle">Support</div>
+          <div class="flinks">
+            <a href="mailto:info@fityab.com">info@fityab.com</a>
+            <a href="#">Shipping Info</a>
+            <a href="#">Returns & Refunds</a>
+            <a href="#">Track Order</a>
+            <a href="online-coaching.html" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--red);color:#fff;padding:.5rem 1.1rem;border-radius:var(--r);font-weight:700;font-size:.85rem;margin-top:.5rem;transition:background .25s;" onmouseover="this.style.background='var(--red-dark)'" onmouseout="this.style.background='var(--red)'">Coaching →</a>
+          </div>
+        </div>
+      </div>
+      <div class="fbar">
+        <p class="fcopy">© 2026 FitYab. All rights reserved.</p>
+        <div class="fpol"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Shipping Policy</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOAT CHAT -->
+<div id="float-chat">
+  <button class="flbtn" onclick="alert('AI chat coming soon!')" aria-label="Chat">
+    <span class="flping ping"></span>
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+    <span class="fldot"></span>
+  </button>
+  <div class="fltip">Chat with AI</div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   PRODUCT DATA
+═══════════════════════════════════════════ */
+const products = [
+  {
+    id:0, name:'Whey Protein Isolate', cat:'protein',
+    price:59.99, wasPrice:79.99,
+    badge:'BESTSELLER', badgeColor:'#DC2626',
+    rating:4.9, reviews:247,
+    tagline:'Fast-absorbing post-workout recovery protein',
+    desc:'25g protein per serving, zero fillers, zero compromise.',
+    meta:'25g protein · 120 cal · 30 servings',
+    flavors:['Chocolate','Vanilla','Strawberry','Cookies & Cream'],
+    sizes:['1 lb','2 lb','5 lb'],
+    svgPath:'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
+    svgColor:'rgba(220,38,38,.5)',
+    facts:[{val:'25g',lbl:'Protein'},{val:'120',lbl:'Calories'},{val:'1g',lbl:'Sugar'}],
+    highlights:['Whey protein isolate — fastest absorbing form','Instantized for smooth mixing, zero clumping','Zero artificial colors or unnecessary fillers','Banned substance tested — safe for competition']
+  },
+  {
+    id:1, name:'Micellar Casein', cat:'protein',
+    price:54.99, wasPrice:null,
+    badge:null, badgeColor:null,
+    rating:4.7, reviews:89,
+    tagline:'Slow-release overnight muscle repair protein',
+    desc:'24g protein per serving. Rich, creamy overnight protein.',
+    meta:'24g protein · 130 cal · 28 servings',
+    flavors:['Chocolate','Vanilla','Unflavored'],
+    sizes:['2 lb','5 lb'],
+    svgPath:'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
+    svgColor:'rgba(14,165,233,.5)',
+    facts:[{val:'24g',lbl:'Protein'},{val:'7h',lbl:'Release'},{val:'130',lbl:'Calories'}],
+    highlights:['Slow-digesting micellar casein forms anti-catabolic overnight','Ideal taken 30 minutes before bed','Thick, filling texture that keeps hunger at bay','Supports muscle preservation during caloric deficits']
+  },
+  {
+    id:2, name:'Pre-Workout Explosion', cat:'preworkout',
+    price:39.99, wasPrice:null,
+    badge:'HIGH STIM', badgeColor:'#0EA5E9',
+    rating:4.8, reviews:312,
+    tagline:'Maximum energy, focus, and skin-splitting pump',
+    desc:'200mg caffeine. Max energy and focus for intense sessions.',
+    meta:'200mg caffeine · 6g citrulline · 40 servings',
+    flavors:['Fruit Punch','Blue Razz','Watermelon','Green Apple'],
+    sizes:['40 Servings','80 Servings'],
+    svgPath:'M13 10V3L4 14h7v7l9-11h-7z',
+    svgColor:'rgba(14,165,233,.5)',
+    facts:[{val:'200mg',lbl:'Caffeine'},{val:'6g',lbl:'Citrulline'},{val:'3.2g',lbl:'Beta-Alanine'}],
+    highlights:['200mg natural caffeine for clean, sustained energy','6g citrulline malate for massive pumps','3.2g beta-alanine for muscular endurance','No crash — no proprietary blends']
+  },
+  {
+    id:3, name:'Pump Formula (Stim-Free)', cat:'preworkout',
+    price:34.99, wasPrice:null,
+    badge:'STIM-FREE', badgeColor:'#F59E0B',
+    rating:4.6, reviews:64,
+    tagline:'Stim-free pump enhancer for any time of day',
+    desc:'Glycerol, arginine & agmatine for skin-splitting pumps.',
+    meta:'0mg caffeine · 8g glycerol · 40 servings',
+    flavors:['Watermelon','Grape','Unflavored'],
+    sizes:['40 Servings'],
+    svgPath:'M13 10V3L4 14h7v7l9-11h-7z',
+    svgColor:'rgba(245,158,11,.5)',
+    facts:[{val:'8g',lbl:'Glycerol'},{val:'0mg',lbl:'Caffeine'},{val:'3g',lbl:'Arginine'}],
+    highlights:['Stack with any stimulant pre-workout for max pumps','8g glycerol increases blood volume and cell swelling','Perfect for evening training when stimulants are unwanted','Completely transparent label — no hidden doses']
+  },
+  {
+    id:4, name:'Creatine Monohydrate', cat:'recovery',
+    price:29.99, wasPrice:null,
+    badge:'ESSENTIAL', badgeColor:'#22C55E',
+    rating:4.9, reviews:428,
+    tagline:'Pharmaceutical-grade creatine for strength and power',
+    desc:'5g per serving. Clinically proven to increase strength and lean mass.',
+    meta:'5g creatine · Unflavored · 60 servings',
+    flavors:['Unflavored'],
+    sizes:['300g','600g','1kg'],
+    svgPath:'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+    svgColor:'rgba(34,197,94,.5)',
+    facts:[{val:'5g',lbl:'Creatine'},{val:'99.9%',lbl:'Purity'},{val:'60',lbl:'Servings'}],
+    highlights:['Pharmaceutical-grade creatine monohydrate','Most researched supplement in sports science history','Mixes instantly — no grit, no clumping','Suitable for all athletes — competitive and recreational']
+  },
+  {
+    id:5, name:'EAA + BCAA Recovery', cat:'recovery',
+    price:44.99, wasPrice:54.99,
+    badge:null, badgeColor:null,
+    rating:4.7, reviews:156,
+    tagline:'Full essential amino acid profile with 7g BCAAs',
+    desc:'Reduces soreness and protects muscle during hard cuts.',
+    meta:'10g EAAs · 7g BCAAs · 30 servings',
+    flavors:['Peach Mango','Lemon Lime','Strawberry Kiwi'],
+    sizes:['30 Servings','60 Servings'],
+    svgPath:'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+    svgColor:'rgba(34,197,94,.5)',
+    facts:[{val:'10g',lbl:'EAAs'},{val:'7g',lbl:'BCAAs'},{val:'2:1:1',lbl:'Ratio'}],
+    highlights:['Complete 10g essential amino acid matrix','7g BCAAs at the clinically studied 2:1:1 leucine ratio','Reduces delayed onset muscle soreness (DOMS)','Ideal intra-workout or post-workout during a cut']
+  },
+  {
+    id:6, name:'Fat Burner Xtreme', cat:'fatloss',
+    price:49.99, wasPrice:null,
+    badge:null, badgeColor:null,
+    rating:4.5, reviews:203,
+    tagline:'Thermogenic formula for elevated fat burning',
+    desc:'Green tea, L-carnitine, and cayenne. Boost metabolism naturally.',
+    meta:'300mg green tea · 1.5g L-carnitine · 60 caps',
+    flavors:['Capsules'],
+    sizes:['60 Caps','120 Caps'],
+    svgPath:'M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z',
+    svgColor:'rgba(245,158,11,.5)',
+    facts:[{val:'300mg',lbl:'Green Tea'},{val:'1.5g',lbl:'L-Carnitine'},{val:'60',lbl:'Capsules'}],
+    highlights:['300mg standardized green tea extract (50% EGCG)','1.5g L-carnitine to mobilize fat for fuel','Cayenne pepper extract for thermogenic effect','Take with food — works synergistically with exercise']
+  },
+  {
+    id:7, name:'CLA Complex', cat:'fatloss',
+    price:34.99, wasPrice:null,
+    badge:null, badgeColor:null,
+    rating:4.4, reviews:78,
+    tagline:'Conjugated linoleic acid for body composition support',
+    desc:'Reduces fat storage while preserving lean muscle mass.',
+    meta:'3.2g CLA · Softgels · 90 caps',
+    flavors:['Softgels'],
+    sizes:['90 Caps'],
+    svgPath:'M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z',
+    svgColor:'rgba(245,158,11,.4)',
+    facts:[{val:'3.2g',lbl:'CLA'},{val:'90',lbl:'Softgels'},{val:'80%',lbl:'Purity'}],
+    highlights:['3.2g CLA per serving — the clinically studied dose','80% minimum CLA purity from safflower oil','Supports fat loss while preserving lean tissue','Stack with Fat Burner Xtreme for amplified results']
+  }
+];
+
+/* ═══ CART STATE ═══ */
+let cart = [];
+let currentFilter = 'all';
+let currentPriceFilter = 'all';
+let currentSort = 'featured';
+let modalProductId = null;
+let modalQty = 1;
+let modalFlavor = '';
+let modalSize = '';
+let promoApplied = false;
+
+/* ═══ RENDER PRODUCTS ═══ */
+function renderProducts() {
+  let filtered = products.filter(p => {
+    const catOk = currentFilter === 'all' || p.cat === currentFilter;
+    let priceOk = true;
+    if (currentPriceFilter === 'under30') priceOk = p.price < 30;
+    else if (currentPriceFilter === '30to50') priceOk = p.price >= 30 && p.price <= 50;
+    else if (currentPriceFilter === 'over50') priceOk = p.price > 50;
+    return catOk && priceOk;
+  });
+
+  if (currentSort === 'price-asc') filtered.sort((a,b) => a.price - b.price);
+  else if (currentSort === 'price-desc') filtered.sort((a,b) => b.price - a.price);
+  else if (currentSort === 'rating') filtered.sort((a,b) => b.rating - a.rating);
+  else if (currentSort === 'name') filtered.sort((a,b) => a.name.localeCompare(b.name));
+
+  document.getElementById('resultsCount').textContent = filtered.length;
+  const grid = document.getElementById('prodGrid');
+  grid.innerHTML = filtered.map(p => {
+    const save = p.wasPrice ? Math.round((1 - p.price/p.wasPrice)*100) : null;
+    return `
+    <div class="pcard" id="pcard-${p.id}">
+      ${p.badge ? `<span class="pcard-badge" style="background:${p.badgeColor};">${p.badge}</span>` : ''}
+      <button class="pcard-wish" id="wish-${p.id}" onclick="toggleWish(${p.id},event)" title="Wishlist">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+      </button>
+      <div class="pcard-img" onclick="openModal(${p.id})" style="cursor:pointer;">
+        <svg width="80" height="80" fill="none" stroke="${p.svgColor}" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="${p.svgPath}"/>
+        </svg>
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-name" style="cursor:pointer;" onclick="openModal(${p.id})">${p.name}</div>
+        <div class="pcard-desc">${p.desc}</div>
+        <div class="pcard-rating">
+          <span class="stars-sm">${'★'.repeat(Math.floor(p.rating))}${p.rating % 1 ? '½' : ''}</span>
+          <span class="rating-num">${p.rating} (${p.reviews})</span>
+        </div>
+        <div class="flavor-row">
+          ${p.flavors.slice(0,3).map((f,i) => `<span class="flavor-pill ${i===0?'active':''}" onclick="selectFlavor(this)">${f}</span>`).join('')}
+          ${p.flavors.length > 3 ? `<span class="flavor-pill" style="color:var(--dim);">+${p.flavors.length-3}</span>` : ''}
+        </div>
+        <div class="pcard-meta">${p.meta}</div>
+        <div class="pcard-footer">
+          <div class="pcard-price">
+            <span class="price-now">$${p.price.toFixed(2)}</span>
+            ${p.wasPrice ? `<span class="price-was">$${p.wasPrice.toFixed(2)}</span>` : ''}
+            ${save ? `<span class="price-save">-${save}%</span>` : ''}
+          </div>
+          <button class="btn-add-cart" id="addbtn-${p.id}" onclick="addToCart(${p.id})">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            Add
+          </button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ═══ FILTERS & SORT ═══ */
+function filterProds(cat, btn) {
+  currentFilter = cat;
+  document.querySelectorAll('#filterGroup .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProducts();
+}
+function filterByPrice(range, btn) {
+  currentPriceFilter = range;
+  btn.closest('.sidebar-box').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProducts();
+}
+function sortProducts(val) { currentSort = val; renderProducts(); }
+function selectFlavor(el) {
+  el.closest('.flavor-row').querySelectorAll('.flavor-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+}
+function toggleWish(id, e) {
+  e.stopPropagation();
+  const btn = document.getElementById('wish-'+id);
+  btn.classList.toggle('wished');
+}
+
+/* ═══ CART LOGIC ═══ */
+function addToCart(productId, qty=1, flavor='', size='') {
+  const p = products[productId];
+  const selectedFlavor = flavor || p.flavors[0];
+  const selectedSize = size || p.sizes[0];
+  const key = `${productId}-${selectedFlavor}-${selectedSize}`;
+
+  const existing = cart.find(i => i.key === key);
+  if (existing) { existing.qty += qty; }
+  else { cart.push({ key, productId, name:p.name, price:p.price, flavor:selectedFlavor, size:selectedSize, qty, svgPath:p.svgPath, svgColor:p.svgColor }); }
+
+  updateCartUI();
+  showToast(`${p.name} added to cart!`);
+
+  // Flash add button
+  const btn = document.getElementById('addbtn-'+productId);
+  if (btn) {
+    btn.classList.add('added');
+    btn.textContent = '✓ Added';
+    setTimeout(() => { btn.classList.remove('added'); btn.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="14" height="14"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg> Add'; }, 1500);
+  }
+}
+
+function addBundle(ids) {
+  ids.forEach(id => addToCart(id));
+  openCart();
+}
+
+function removeFromCart(key) {
+  cart = cart.filter(i => i.key !== key);
+  updateCartUI();
+}
+
+function changeQty(key, delta) {
+  const item = cart.find(i => i.key === key);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) removeFromCart(key);
+  else updateCartUI();
+}
+
+function updateCartUI() {
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+  const discount = promoApplied ? total * 0.1 : 0;
+  const finalTotal = total - discount;
+  const shipping = finalTotal >= 75 ? 0 : 5.99;
+
+  // Update counts
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartCountMob').textContent = count;
+
+  // Bounce animation
+  const countEl = document.getElementById('cartCount');
+  countEl.classList.remove('bounce');
+  void countEl.offsetWidth;
+  countEl.classList.add('bounce');
+
+  // Cart items
+  const itemsEl = document.getElementById('cartItems');
+  const emptyEl = document.getElementById('cartEmpty');
+  const footerEl = document.getElementById('cartFooter');
+
+  if (cart.length === 0) {
+    emptyEl.style.display = 'flex';
+    footerEl.style.display = 'none';
+    itemsEl.innerHTML = '';
+    itemsEl.appendChild(emptyEl);
+  } else {
+    emptyEl.style.display = 'none';
+    footerEl.style.display = 'block';
+    itemsEl.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <div class="cart-item-img" style="background:linear-gradient(135deg,#1F2937,#111827);">
+          <svg fill="none" stroke="${item.svgColor}" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="${item.svgPath}"/>
+          </svg>
+        </div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-flavor">${item.flavor} · ${item.size}</div>
+          <div class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</div>
+          <div class="cart-item-controls">
+            <button class="qty-btn" onclick="changeQty('${item.key}',-1)">−</button>
+            <span class="qty-num">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty('${item.key}',1)">+</button>
+          </div>
+        </div>
+        <button class="cart-item-remove" onclick="removeFromCart('${item.key}')">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>`).join('');
+  }
+
+  // Totals
+  document.getElementById('cartSubtotal').textContent = `$${total.toFixed(2)}`;
+  document.getElementById('cartShipping').textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
+  const shippingEl = document.getElementById('cartShipping');
+  if (shipping === 0) { shippingEl.style.color = 'var(--green)'; shippingEl.textContent = 'FREE ✓'; }
+  else { shippingEl.style.color = 'var(--muted)'; shippingEl.textContent = `$${shipping.toFixed(2)} (free over $75)`; }
+  document.getElementById('cartTotal').textContent = `$${(finalTotal + shipping).toFixed(2)}`;
+}
+
+/* ═══ PROMO CODE ═══ */
+function applyPromo() {
+  const code = document.getElementById('promoInput').value.trim().toUpperCase();
+  if (code === 'FITYAB10' && !promoApplied) {
+    promoApplied = true;
+    document.getElementById('promoSuccess').style.display = 'block';
+    updateCartUI();
+    showToast('Promo code applied! 10% off added.');
+  } else if (promoApplied) {
+    showToast('Promo already applied!');
+  } else {
+    showToast('Invalid promo code. Try FITYAB10');
+  }
+}
+
+/* ═══ CART OPEN / CLOSE ═══ */
+function openCart() {
+  document.getElementById('cartOverlay').classList.add('open');
+  document.getElementById('cartDrawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('mobMenu').classList.remove('open');
+}
+function closeCart() {
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ═══ PRODUCT MODAL ═══ */
+function openModal(id) {
+  const p = products[id];
+  modalProductId = id;
+  modalQty = 1;
+  modalFlavor = p.flavors[0];
+  modalSize = p.sizes[0];
+
+  const save = p.wasPrice ? Math.round((1 - p.price/p.wasPrice)*100) : null;
+  document.getElementById('modalName').textContent = p.name;
+  document.getElementById('modalTagline').textContent = p.tagline;
+  document.getElementById('modalStars').textContent = '★'.repeat(Math.floor(p.rating));
+  document.getElementById('modalRatingTxt').textContent = `${p.rating} · ${p.reviews} reviews`;
+  document.getElementById('modalPriceNow').textContent = `$${p.price.toFixed(2)}`;
+  document.getElementById('modalPriceWas').textContent = p.wasPrice ? `$${p.wasPrice.toFixed(2)}` : '';
+  const saveEl = document.getElementById('modalSave');
+  if (save) { saveEl.style.display = ''; saveEl.textContent = `Save ${save}%`; }
+  else saveEl.style.display = 'none';
+
+  // Background
+  document.getElementById('modalImgSide').style.background = `linear-gradient(135deg, #1F2937, #111827)`;
+  document.getElementById('modalSvg').setAttribute('stroke', p.svgColor);
+  document.getElementById('modalSvg').querySelector('path').setAttribute('d', p.svgPath);
+
+  // Badge
+  const badgeEl = document.getElementById('modalBadge');
+  if (p.badge) { badgeEl.textContent = p.badge; badgeEl.style.background = p.badgeColor; badgeEl.style.display = ''; }
+  else badgeEl.style.display = 'none';
+
+  // Flavors
+  document.getElementById('modalFlavors').innerHTML = p.flavors.map((f,i) =>
+    `<span class="modal-flavor ${i===0?'active':''}" onclick="selectModalFlavor(this,'${f}')">${f}</span>`).join('');
+
+  // Sizes
+  document.getElementById('modalSizes').innerHTML = p.sizes.map((s,i) =>
+    `<button class="modal-size-btn ${i===0?'active':''}" onclick="selectModalSize(this,'${s}')">${s}</button>`).join('');
+
+  document.getElementById('modalQtyNum').textContent = '1';
+
+  // Facts
+  document.getElementById('modalFacts').innerHTML = p.facts.map(f =>
+    `<div class="modal-fact"><div class="modal-fact-val">${f.val}</div><div class="modal-fact-lbl">${f.lbl}</div></div>`).join('');
+
+  // Highlights
+  document.getElementById('modalHighlights').innerHTML = p.highlights.map(h =>
+    `<div class="modal-hl"><svg class="ckico" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>${h}</div>`).join('');
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function handleModalOverlayClick(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+function selectModalFlavor(el, flavor) {
+  document.querySelectorAll('.modal-flavor').forEach(f => f.classList.remove('active'));
+  el.classList.add('active');
+  modalFlavor = flavor;
+}
+function selectModalSize(el, size) {
+  document.querySelectorAll('.modal-size-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  modalSize = size;
+}
+function changeModalQty(delta) {
+  modalQty = Math.max(1, modalQty + delta);
+  document.getElementById('modalQtyNum').textContent = modalQty;
+}
+function addFromModal() {
+  addToCart(modalProductId, modalQty, modalFlavor, modalSize);
+  closeModal();
+  openCart();
+}
+
+/* ═══ TOAST ═══ */
+let toastTimer;
+function showToast(msg) {
+  clearTimeout(toastTimer);
+  const el = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  el.classList.add('show');
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2500);
+}
+
+/* ═══ SCROLL ANIMATION ═══ */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+/* ═══ INIT ═══ */
+document.addEventListener('DOMContentLoaded', () => {
+  renderProducts();
+  updateCartUI();
+
+  // Mobile menu
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('mobMenu').classList.toggle('open');
+  });
+
+  // Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal(); closeCart(); }
+  });
+
+  // Scroll animations
+  setTimeout(() => {
+    document.querySelectorAll('.bundle-card, .review-card, .wcard').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity .5s ease, transform .5s ease';
+      obs.observe(el);
+    });
+  }, 100);
+});
+</script>
+</body>
+</html>
