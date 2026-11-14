@@ -1,0 +1,156 @@
+/* ==========================================================================
+   FitYab — About page extras. Needs fx.css (shared engine) loaded first.
+   ========================================================================== */
+
+.ab-h1{position:relative;z-index:2;font-size:clamp(4.4rem,19vw,17rem);margin:1.25rem 0 0;line-height:.8;letter-spacing:-.025em;pointer-events:none}
+.ab-h1 .ln{display:block}
+.ab-h1 .ln.two{padding-left:clamp(0rem,9vw,9rem)}
+.ab-hero-frame{margin:0;position:absolute;z-index:1;right:var(--ab-pad);top:calc(-1 * clamp(0rem,4vh,2rem));width:min(30vw,27rem);aspect-ratio:3/4;border-radius:.4rem;overflow:hidden;background:#0a0a0a;border:1px solid var(--ab-line)}
+.ab-hero-frame img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover}
+
+/* ==========================================================================
+   MISSION
+   ========================================================================== */
+.ab-sec{position:relative;padding:clamp(5rem,12vw,10rem) 0}
+.ab-mission-h{font-size:clamp(3rem,9.5vw,9rem);margin:1.5rem 0 0}
+.ab-statement{font-family:var(--h,'Rajdhani',sans-serif);font-weight:600;font-size:clamp(1.7rem,4vw,3.7rem);line-height:1.12;margin:clamp(3rem,8vw,6rem) 0 0;max-width:62rem;margin-left:auto;color:#fff}
+.ab-mission-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(2rem,6vw,6rem);margin-top:clamp(3rem,8vw,7rem);align-items:start}
+.ab-body{color:#d1d5db;line-height:1.8;font-size:1.05rem;margin:0 0 1.5rem}
+.ab-checks{list-style:none;margin:2rem 0 0;padding:0;display:grid;gap:.9rem}
+.ab-checks li{display:flex;gap:.8rem;align-items:flex-start;color:#e5e7eb}
+.ab-checks svg{flex:0 0 1.2rem;width:1.2rem;height:1.2rem;margin-top:.2rem;fill:#22C55E}
+
+/* Values index (interactive) */
+.v-x{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);border:1px solid var(--ab-line);border-radius:.6rem;overflow:hidden;background:linear-gradient(135deg,#111,#050505)}
+.v-list{display:flex;flex-direction:column;border-right:1px solid var(--ab-line)}
+.v-btn{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:1rem;padding:1.5rem 1.6rem;border-bottom:1px solid var(--ab-line);transition:background .3s,padding .4s var(--ab-ease),color .3s;color:var(--ab-mute);flex:1}
+.v-btn:last-child{border-bottom:0}
+.v-btn .n{font:700 .8rem/1 var(--b,'Inter',sans-serif);letter-spacing:.14em;color:var(--ab-red)}
+.v-btn .t{font-family:var(--h,'Rajdhani',sans-serif);font-weight:700;font-size:clamp(1.3rem,2.2vw,2rem);text-transform:uppercase;letter-spacing:.01em}
+.v-btn[aria-selected="true"]{background:var(--ab-red);color:#fff;padding-left:2.2rem}
+.v-btn[aria-selected="true"] .n{color:#fff}
+.v-btn:focus-visible{outline:2px solid #fff;outline-offset:-4px}
+.v-panels{display:grid;position:relative;padding:clamp(1.5rem,3vw,2.6rem)}
+.v-panel{grid-area:1/1;display:flex;flex-direction:column;justify-content:center;gap:1rem;opacity:0;visibility:hidden;transform:translateY(1rem);transition:opacity .5s var(--ab-ease),transform .6s var(--ab-ease),visibility 0s .5s}
+.v-panel.on{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.v-panel .big{font-family:var(--h,'Rajdhani',sans-serif);font-weight:700;font-size:clamp(5rem,10vw,9rem);line-height:.8;color:transparent;-webkit-text-stroke:1.5px rgba(220,38,38,.7)}
+.v-panel h3{font-family:var(--h,'Rajdhani',sans-serif);font-size:clamp(1.5rem,2.4vw,2.2rem);text-transform:uppercase;margin:0}
+.v-panel p{margin:0;color:#d1d5db;line-height:1.75}
+
+/* ==========================================================================
+   JOURNEY  — pinned horizontal gallery (desktop) / swipe gallery (touch)
+   ========================================================================== */
+.journey{position:relative;background:#000;border-top:1px solid var(--ab-line);padding:clamp(4rem,8vw,6rem) 0 clamp(3rem,6vw,5rem)}
+.j-hint{display:none;text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--ab-mute);margin:0 0 1rem}
+.j-viewport{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:2.5rem 7vw 0}
+.j-viewport::-webkit-scrollbar{display:none}
+.j-track{display:flex;gap:1.25rem;width:max-content}
+.j-panel{position:relative;flex:0 0 84vw;scroll-snap-align:center;display:flex;flex-direction:column;gap:1.25rem}
+.j-ui{display:none}
+
+.j-intro h2{font-size:clamp(2.6rem,12vw,5rem);margin:1rem 0 1rem}
+.j-intro p.ab-lead{margin-bottom:1.5rem}
+
+/* Before / after compare */
+.ba{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;background:#0a0a0a;border:1px solid var(--ab-line);border-radius:.4rem;--pos:50%;user-select:none}
+.ba-layer{position:absolute;inset:0}
+.ba-layer img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba-after{clip-path:inset(0 0 0 var(--pos))}
+.ba-tag{position:absolute;top:1rem;left:1rem;z-index:2;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:var(--h,'Rajdhani',sans-serif);font-weight:700;letter-spacing:.16em;font-size:.8rem;padding:.35rem .9rem;border-radius:2rem;text-transform:uppercase}
+.ba-after .ba-tag{left:auto;right:1rem;background:var(--ab-red);border-color:var(--ab-red)}
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;background:#fff;z-index:3;pointer-events:none;transform:translateX(-1px)}
+.ba-handle span{position:absolute;top:50%;left:50%;width:3rem;height:3rem;margin:-1.5rem 0 0 -1.5rem;border-radius:50%;background:var(--ab-red);border:2px solid #fff;display:flex;align-items:center;justify-content:center;box-shadow:0 .5rem 1.5rem rgba(0,0,0,.5)}
+.ba-handle span::before{content:"\2194";color:#fff;font-size:1.2rem;font-weight:700}
+.ba-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;z-index:4;touch-action:pan-y;-webkit-appearance:none;appearance:none}
+.ba:focus-within{outline:2px solid var(--ab-red);outline-offset:3px}
+
+/* Milestone panels */
+.j-year{font-family:var(--h,'Rajdhani',sans-serif);font-weight:700;line-height:.8;font-size:clamp(5rem,26vw,10rem);color:transparent;-webkit-text-stroke:1.5px rgba(220,38,38,.7);pointer-events:none;margin:0}
+.j-photo{position:relative;width:100%;aspect-ratio:4/5;overflow:hidden;background:#0a0a0a;border:1px solid var(--ab-line);border-radius:.4rem;margin:0}
+.j-photo-in{position:absolute;inset:0;overflow:hidden}
+.j-photo img{position:absolute;top:0;left:-9%;width:118%;max-width:none;height:100%;object-fit:cover;transition:transform 1.2s var(--ab-ease)}
+.j-photo:hover img{transform:scale(1.05)}
+.j-num{font:700 .78rem/1 var(--b,'Inter',sans-serif);letter-spacing:.22em;text-transform:uppercase;color:var(--ab-red);margin:0 0 .8rem}
+.j-title{font-family:var(--h,'Rajdhani',sans-serif);font-weight:700;font-size:clamp(1.7rem,6vw,2.4rem);line-height:1;text-transform:uppercase;margin:0 0 .9rem}
+.j-text{color:#d1d5db;line-height:1.75;margin:0;max-width:30rem}
+.j-today .j-photo{aspect-ratio:16/10}
+.j-quote{font-family:var(--h,'Rajdhani',sans-serif);font-weight:600;font-size:clamp(1.5rem,5vw,2.2rem);line-height:1.2;margin:0}
+.j-quote span{color:var(--ab-red)}
+.j-link{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.2rem;font-weight:700;letter-spacing:.14em;font-size:.8rem;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--ab-red);padding-bottom:.35rem;text-decoration:none}
+
+/* ---- Desktop, motion allowed: pinned horizontal scroll ---- */
+@media (min-width:900px){
+  .j-hint{display:none}
+  .journey{padding:0}
+  .j-viewport{padding:0;scroll-snap-type:none}
+  .journey.is-pinned{height:100vh;height:100svh;overflow:hidden}
+  .journey.is-pinned .j-viewport{height:100%;overflow:clip}
+  .j-track{height:100%;gap:clamp(3rem,6vw,7rem);padding:0 clamp(2rem,8vw,9rem);align-items:stretch;will-change:transform}
+  .j-panel{flex:0 0 auto;scroll-snap-align:none;flex-direction:row;align-items:center;gap:clamp(1.5rem,3vw,3rem);
+    padding:calc(var(--ab-hdr) + 1rem) 0 5.5rem;height:100%}
+  .j-intro{width:clamp(44rem,72vw,70rem);justify-content:space-between}
+  .j-intro .j-copy{flex:1;min-width:0}
+  .j-intro h2{font-size:clamp(3rem,6.2vw,6.4rem);margin:1.2rem 0 1.2rem}
+  .j-intro .ba{width:auto;height:clamp(22rem,60vh,40rem);flex:0 0 auto}
+  .j-ms{width:clamp(44rem,62vw,66rem)}
+  .j-ms .j-photo{width:auto;height:clamp(22rem,58vh,38rem);flex:0 0 auto}
+  .j-ms .j-copy{position:relative;z-index:3;max-width:26rem;flex:1}
+  .j-ms[data-side="b"] .j-photo{order:2}
+  .j-ms[data-side="a"] .j-photo{transform:translateY(-3vh)}
+  .j-ms[data-side="b"] .j-photo{transform:translateY(5vh)}
+  .j-year{position:absolute;z-index:2;top:calc(var(--ab-hdr) + 1rem);left:-1.5rem;font-size:clamp(7rem,25vh,15rem);-webkit-text-stroke:2px rgba(220,38,38,.75)}
+  .j-ms[data-side="b"] .j-year{left:auto;right:-1.5rem}
+  .j-title{font-size:clamp(2rem,3.4vw,3.4rem)}
+  .j-today{width:clamp(48rem,76vw,80rem)}
+  .j-today .j-photo{width:auto;height:clamp(20rem,50vh,34rem);flex:0 0 auto}
+  .j-today .j-copy{flex:1;min-width:0;max-width:30rem}
+  .j-quote{font-size:clamp(1.6rem,2.6vw,2.6rem)}
+  .journey.is-pinned .j-photo.reveal{clip-path:inset(0 0 0 100%)}
+  .j-ui{display:none;position:absolute;left:clamp(2rem,8vw,9rem);right:clamp(2rem,8vw,9rem);bottom:clamp(1.5rem,4vh,2.5rem);z-index:5;align-items:center;gap:1.5rem;
+    font:700 .72rem/1 var(--b,'Inter',sans-serif);letter-spacing:.2em;text-transform:uppercase;color:var(--ab-mute)}
+  .journey.is-pinned .j-ui{display:flex}
+  .j-ui .bar{flex:1;height:2px;background:var(--ab-line);position:relative;overflow:hidden}
+  .j-ui .bar i{position:absolute;inset:0;background:var(--ab-red);transform-origin:left;transform:scaleX(0)}
+  .j-ui .lab{color:#fff;min-width:5rem}
+  .j-ui .jcnt{min-width:4.5rem;text-align:right}
+}
+/* Reduced motion on desktop: plain stacked layout, no pin */
+@media (min-width:900px) and (prefers-reduced-motion:reduce){
+  .j-viewport{overflow:visible}
+  .j-track{flex-direction:column;width:auto;height:auto;gap:6rem;padding:0 var(--ab-pad)}
+  .j-panel,.j-intro,.j-ms,.j-today{width:auto;height:auto;padding:0}
+  .j-year{position:static}
+}
+@media (max-width:899px){
+  .j-hint{display:block}
+  .j-ms .j-year{position:absolute;top:-1.2rem;left:.5rem;z-index:2;font-size:clamp(4.5rem,24vw,8rem)}
+  .j-ms .j-photo{margin-top:1.4rem}
+}
+
+/* ==========================================================================
+   TEAM
+   ========================================================================== */
+.ab-team{background:var(--ab-bg2);border-top:1px solid var(--ab-line)}
+.ab-team-h{font-size:clamp(2.8rem,8vw,7.5rem);margin:1.25rem 0 0}
+.ab-team-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.25rem,4vw,4rem);margin-top:clamp(3rem,7vw,6rem);align-items:start}
+.ab-team-card:nth-child(2){margin-top:clamp(0rem,8vw,7rem)}
+.ab-team-img{position:relative;aspect-ratio:4/5;overflow:hidden;background:linear-gradient(135deg,#1F2937,#111827);border-radius:.4rem;border:1px solid var(--ab-line)}
+.ab-team-img img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover}
+.ab-team-badge{position:absolute;left:1rem;bottom:1rem;z-index:2;background:var(--ab-red);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.4rem .9rem;border-radius:2rem}
+.ab-team-name{font-family:var(--h,'Rajdhani',sans-serif);font-weight:700;font-size:clamp(2rem,4vw,3.4rem);text-transform:uppercase;line-height:1;margin:1.4rem 0 .3rem}
+.ab-team-role{color:var(--ab-red);font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;margin:0 0 .9rem}
+.ab-team-bio{color:#d1d5db;line-height:1.75;margin:0 0 1rem;max-width:32rem}
+.ab-certs{display:flex;flex-wrap:wrap;gap:.5rem}
+.ab-certs span{border:1px solid var(--ab-line);border-radius:2rem;padding:.3rem .8rem;font-size:.75rem;font-weight:600;color:#e5e7eb}
+
+
+/* ---------- About responsive ---------- */
+@media (max-width:899px){
+  .ab-hero-frame{position:relative;top:auto;right:auto;width:62%;margin:2rem 0 0 auto}
+  .ab-h1{margin-top:1rem}
+  .ab-mission-grid{grid-template-columns:1fr}
+  .v-x{grid-template-columns:1fr}
+  .v-list{border-right:0;border-bottom:1px solid var(--ab-line)}
+  .ab-team-grid{grid-template-columns:1fr}
+  .ab-team-card:nth-child(2){margin-top:0}
+}

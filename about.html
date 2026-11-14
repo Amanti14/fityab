@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - FitYab</title>
+  <meta name="description" content="The story behind FitYab: a competitive bodybuilder's journey from first rep to first place, and the coaching, nutrition and supplements built from it."/>
+  <meta name="theme-color" content="#000000"/>
+  <script>
+    /* Motion is opt-out: enabled unless the visitor prefers reduced motion,
+       and switched off again after 4s if the animation scripts never start,
+       so content can never be left invisible. */
+    (function(){var d=document.documentElement;
+      if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        d.classList.add('anim');
+        setTimeout(function(){if(!window.__abReady)d.classList.remove('anim');},4000);
+      }})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="fx.css">
+  <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+<!-- Page transition overlay (cinematic wipe between pages) -->
+<div class="pt" id="pt" aria-hidden="true"><div class="pt-r"></div><div class="pt-k"><span>FIT<b>YAB</b></span></div></div>
+<!-- Custom cursor (desktop only; native cursor stays visible) -->
+<div class="cur" id="cur" aria-hidden="true"><div class="cur-ring"><span></span></div><div class="cur-dot"></div></div>
+
+<!-- HEADER (shared across all pages — edit shared.js to change it everywhere) -->
+<header>
+  <div id="site-header"></div>
+</header>
+<script src="shared.js"></script>
+
+<main class="ab-main" id="main">
+
+<!-- ============ HERO ============ -->
+<section class="ab-hero" aria-labelledby="ab-title">
+  <div class="ab-wrap ab-hero-in">
+    <span class="ab-badge rv"><i></i>Our Story</span>
+    <h1 class="ab-display ab-h1 sp chars" id="ab-title"><span class="ln one" data-px="-6">ABOUT</span><span class="ln two ab-red" data-px="6">FITYAB</span></h1>
+    <figure class="ab-hero-frame rvp" data-cursor="FITYAB" data-py="-14">
+      <img src="images/about-hero.jpg" alt="The FitYab founder training" decoding="async" data-pimg="6" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="ph-fallback"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3.5"/></svg><div class="ph-t">Add Hero Photo</div><div class="ph-f">images/about-hero.jpg</div></div>
+    </figure>
+    <div class="ab-hero-foot">
+      <p class="ab-lead rv">Built from passion, driven by results. We exist to help real people build extraordinary physiques and transform their lives through expert coaching, science-based nutrition, and premium supplements.</p>
+      <a href="#story" class="ab-scroll rv" data-cursor="SCROLL"><span>Scroll</span><i></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE + STATS ============ -->
+<div class="ab-marquee" aria-hidden="true"><div class="ab-marquee-track"><span>Evidence-based</span><span>Personalized</span><span>Results obsessed</span><span>Community</span><span>Transparency</span><span>Consistency</span><span>Education</span><span>Evidence-based</span><span>Personalized</span><span>Results obsessed</span><span>Community</span><span>Transparency</span><span>Consistency</span><span>Education</span></div></div>
+
+<section class="ab-stats" aria-label="FitYab by the numbers" id="story">
+  <div class="ab-stat"><div class="ab-stat-n"><span class="num-up" data-to="500">500</span><em>+</em></div><div class="ab-stat-l">Clients Transformed</div></div>
+  <div class="ab-stat"><div class="ab-stat-n"><span class="num-up" data-to="10">10</span><em>+</em></div><div class="ab-stat-l">Years Experience</div></div>
+  <div class="ab-stat"><div class="ab-stat-n"><span class="num-up" data-to="50">50</span><em>+</em></div><div class="ab-stat-l">Competition Wins</div></div>
+  <div class="ab-stat"><div class="ab-stat-n"><span class="num-up" data-to="98">98</span><em>%</em></div><div class="ab-stat-l">Client Satisfaction</div></div>
+</section>
+
+<!-- ============ MISSION ============ -->
+<section class="ab-sec" aria-labelledby="mission-h">
+  <div class="ab-wrap">
+    <div class="ab-eyebrow rv">Our Mission</div>
+    <h2 class="ab-display ab-mission-h sp chars" id="mission-h">WE EXIST TO <span class="ab-red">TRANSFORM</span> LIVES</h2>
+
+    <p class="ab-statement sp words" id="statement">FitYab was founded on a simple belief: everyone deserves access to world-class fitness coaching, regardless of where they live. We bring elite-level training, nutrition science, and community directly to your fingertips — no gym required.</p>
+
+    <div class="ab-mission-grid">
+      <div class="rv">
+        <p class="ab-body">Our methods are rooted in evidence-based science and refined through years of competitive bodybuilding. We don't believe in shortcuts — we believe in sustainable systems that produce lasting results you're proud of.</p>
+        <ul class="ab-checks">
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Evidence-based training methodology built around your body</li>
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Personalized nutrition planning for every client, every goal</li>
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ongoing support, accountability, and weekly adjustments</li>
+          <li><svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Premium supplements formulated by coaches who actually use them</li>
+        </ul>
+      </div>
+
+      <div class="v-x rv" id="values">
+        <div class="v-list" role="tablist" aria-label="What we stand for" aria-orientation="vertical">
+          <button class="v-btn" role="tab" id="vt1" aria-controls="vp1" aria-selected="true"><span class="n">01</span><span class="t">Integrity First</span></button>
+          <button class="v-btn" role="tab" id="vt2" aria-controls="vp2" aria-selected="false" tabindex="-1"><span class="n">02</span><span class="t">Client-Centered</span></button>
+          <button class="v-btn" role="tab" id="vt3" aria-controls="vp3" aria-selected="false" tabindex="-1"><span class="n">03</span><span class="t">Results Obsessed</span></button>
+          <button class="v-btn" role="tab" id="vt4" aria-controls="vp4" aria-selected="false" tabindex="-1"><span class="n">04</span><span class="t">Community</span></button>
+        </div>
+        <div class="v-panels" aria-live="polite">
+          <div class="v-panel on" role="tabpanel" id="vp1" aria-labelledby="vt1"><div class="big" aria-hidden="true">01</div><h3>Integrity First</h3><p>We only recommend what we believe in. No fads, no shortcuts — just proven, science-backed methods.</p></div>
+          <div class="v-panel" role="tabpanel" id="vp2" aria-labelledby="vt2"><div class="big" aria-hidden="true">02</div><h3>Client-Centered</h3><p>Your goals drive everything. Programs are built around your life, schedule, and unique body type.</p></div>
+          <div class="v-panel" role="tabpanel" id="vp3" aria-labelledby="vt3"><div class="big" aria-hidden="true">03</div><h3>Results Obsessed</h3><p>We track, measure, and optimize constantly. If something isn't working, we fix it fast.</p></div>
+          <div class="v-panel" role="tabpanel" id="vp4" aria-labelledby="vt4"><div class="big" aria-hidden="true">04</div><h3>Community</h3><p>You join a family. Our clients lift each other up through every milestone and setback.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOURNEY (pinned horizontal gallery) ============ -->
+<section class="journey" id="journey" aria-labelledby="j-title">
+  <p class="j-hint">Swipe to explore the journey →</p>
+  <div class="j-viewport" id="jView">
+    <div class="j-track" id="jTrack">
+
+      <article class="j-panel j-intro" data-label="Begin">
+        <div class="j-copy">
+          <div class="ab-eyebrow">The Journey</div>
+          <h2 class="ab-display sp chars" id="j-title">FROM FIRST REP TO <span class="ab-red">FIRST PLACE</span></h2>
+          <p class="ab-lead">Every transformation we coach started with our own. Here's the real, unfiltered story behind FitYab — the setbacks, the stage, and everything it took to get here.</p>
+          <p class="j-num">Drag the slider — before / after</p>
+        </div>
+        <div class="ba" id="ba" data-cursor="DRAG">
+          <div class="ba-layer ba-before">
+            <img src="images/journey-before.jpg" alt="Before starting the transformation" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="ph-fallback"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3.5"/></svg><div class="ph-t">Add “Before” Photo</div><div class="ph-f">images/journey-before.jpg</div></div>
+            <span class="ba-tag">Before</span>
+          </div>
+          <div class="ba-layer ba-after">
+            <img src="images/journey-after.jpg" alt="After the transformation" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="ph-fallback"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3.5"/></svg><div class="ph-t">Add “After” Photo</div><div class="ph-f">images/journey-after.jpg</div></div>
+            <span class="ba-tag">After</span>
+          </div>
+          <div class="ba-handle" aria-hidden="true"><span></span></div>
+          <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Compare the before and after photos">
+        </div>
+      </article>
+
+      <article class="j-panel j-ms" data-side="a" data-label="2014" aria-labelledby="ms-2014">
+        <p class="j-year" aria-hidden="true" data-year>2014</p>
+        <figure class="j-photo reveal" data-cursor="VIEW">
+          <div class="j-photo-in" data-pimg>
+          <img src="images/journey-2014.jpg" alt="First competition, 2014" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="ph-fallback"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3.5"/></svg><div class="ph-t">Add Photo</div><div class="ph-f">images/journey-2014.jpg</div></div>
+          </div>
+        </figure>
+        <div class="j-copy">
+          <p class="j-num">Chapter 01</p>
+          <h3 class="j-title" id="ms-2014">First Competition, First Win</h3>
+          <p class="j-text">Stepped on stage for the first time at a regional bodybuilding show — and placed 1st. That single moment turned a personal obsession with training into a calling to coach others through the same process.</p>
+        </div>
+      </article>
+
+      <article class="j-panel j-ms" data-side="b" data-label="2016" aria-labelledby="ms-2016">
+        <p class="j-year" aria-hidden="true" data-year>2016</p>
+        <figure class="j-photo reveal" data-cursor="VIEW">
+          <div class="j-photo-in" data-pimg>
+          <img src="images/journey-2016.jpg" alt="Early coaching days, 2016" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="ph-fallback"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3.5"/></svg><div class="ph-t">Add Photo</div><div class="ph-f">images/journey-2016.jpg</div></div>
+          </div>
+        </figure>
+        <div class="j-copy">
+          <p class="j-num">Chapter 02</p>
+          <h3 class="j-title" id="ms-2016">Coaching My First 10 Clients</h3>
+          <p class="j-text">Started coaching online out of a spare bedroom with a spreadsheet and a phone. Word spread fast — within six months there was a waitlist of over 40 people wanting the same system.</p>
+        </div>
+      </article>
+
+      <article class="j-panel j-ms" data-side="a" data-label="2019" aria-labelledby="ms-2019">
+        <p class="j-year" aria-hidden="true" data-year>2019</p>
+        <figure class="j-photo reveal" data-cursor="VIEW">
+          <div class="j-photo-in" data-pimg>
+          <img src="images/journey-2019.jpg" alt="FitYab launches, 2019" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="ph-fallback"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3.5"/></svg><div class="ph-t">Add Photo</div><div class="ph-f">images/journey-2019.jpg</div></div>
+          </div>
+        </figure>
+        <div class="j-copy">
+          <p class="j-num">Chapter 03</p>
+          <h3 class="j-title" id="ms-2019">FitYab Officially Launches</h3>
+          <p class="j-text">Turned the spreadsheet system into a real brand — structured coaching tiers, personalized nutrition plans, and our first supplement line, built from everything I'd learned on my own way up.</p>
+        </div>
+      </article>
+
+      <article class="j-panel j-ms" data-side="b" data-label="2022" aria-labelledby="ms-2022">
+        <p class="j-year" aria-hidden="true" data-year>2022</p>
+        <figure class="j-photo reveal" data-cursor="VIEW">
+          <div class="j-photo-in" data-pimg>
+          <img src="images/journey-2022.jpg" alt="500+ transformations, 2022" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="ph-fallback"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3.5"/></svg><div class="ph-t">Add Photo</div><div class="ph-f">images/journey-2022.jpg</div></div>
+          </div>
+        </figure>
+        <div class="j-copy">
+          <p class="j-num">Chapter 04</p>
+          <h3 class="j-title" id="ms-2022">500+ Transformations</h3>
+          <p class="j-text">Crossed the landmark of 500 client transformations across 30+ countries — proof the same system that worked on stage works for real people with real jobs and real lives.</p>
+        </div>
+      </article>
+
+      <article class="j-panel j-ms" data-side="a" data-label="2024" aria-labelledby="ms-2024">
+        <p class="j-year" aria-hidden="true" data-year>2024</p>
+        <figure class="j-photo reveal" data-cursor="VIEW">
+          <div class="j-photo-in" data-pimg>
+          <img src="images/journey-2024.jpg" alt="Apparel and AI tools launch, 2024" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="ph-fallback"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3.5"/></svg><div class="ph-t">Add Photo</div><div class="ph-f">images/journey-2024.jpg</div></div>
+          </div>
+        </figure>
+        <div class="j-copy">
+          <p class="j-num">Chapter 05</p>
+          <h3 class="j-title" id="ms-2024">E11even Clothing &amp; AI Coaching Tools</h3>
+          <p class="j-text">Launched the E11even apparel line and an AI-powered coaching assistant — built so every client gets support around the clock, not just during check-in week.</p>
+        </div>
+      </article>
+
+      <article class="j-panel j-today" data-label="Today" aria-labelledby="j-today-t">
+        <figure class="j-photo reveal" data-cursor="TODAY">
+          <div class="j-photo-in" data-pimg>
+          <img src="images/journey-today.jpg" alt="FitYab today" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="ph-fallback"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3.5"/></svg><div class="ph-t">Add Current Photo</div><div class="ph-f">images/journey-today.jpg</div></div>
+          </div>
+        </figure>
+        <div class="j-copy">
+          <p class="j-num" id="j-today-t">Today</p>
+          <p class="j-quote">"I don't coach from a textbook. I coach from <span>every rep I've put in myself</span> — the wins, the plateaus, and the comeback."</p>
+          <a class="j-link" href="online-coaching.html" data-cursor="GO">Start your own story <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+  <div class="j-ui" aria-hidden="true"><span class="lab" id="jLab">Begin</span><span class="bar"><i id="jBar"></i></span><span class="jcnt" id="jCnt">01 / 07</span></div>
+</section>
+
+<!-- ============ CORE VALUES ============ -->
+<section class="ab-sec" aria-labelledby="cv-h">
+  <div class="ab-wrap">
+    <div class="ab-eyebrow rv">What We Stand For</div>
+    <h2 class="ab-display ab-mission-h sp chars" id="cv-h">OUR <span class="ab-red">CORE VALUES</span></h2>
+    <div class="ab-cv">
+      <div class="ab-cv-row rv"><div class="ab-cv-n" aria-hidden="true">01</div><h3 class="ab-cv-t">Transparency</h3><p class="ab-cv-d">No hidden fees, no proprietary blends, no false promises. Every ingredient, every cost, every process is laid out clearly for every client.</p></div>
+      <div class="ab-cv-row rv"><div class="ab-cv-n" aria-hidden="true">02</div><h3 class="ab-cv-t">Consistency</h3><p class="ab-cv-d">Real transformation takes time. We build habits and systems that compound over months and years — not 8-week gimmicks that leave you back at square one.</p></div>
+      <div class="ab-cv-row rv"><div class="ab-cv-n" aria-hidden="true">03</div><h3 class="ab-cv-t">Education</h3><p class="ab-cv-d">We teach clients why, not just what. Understanding the principles behind the program makes results permanent and builds true long-term independence.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="ab-sec ab-team" aria-labelledby="team-h">
+  <div class="ab-wrap">
+    <div class="ab-eyebrow rv">Meet the Team</div>
+    <h2 class="ab-display ab-team-h sp chars" id="team-h">THE PEOPLE BEHIND <span class="ab-red">YOUR RESULTS</span></h2>
+    <div class="ab-team-grid">
+      <article class="ab-team-card rv">
+        <div class="ab-team-img" data-cursor="COACH">
+          <img src="images/team-coach.jpg" alt="Alex Yab, Founder and Head Bodybuilding Coach" loading="lazy" decoding="async" data-pimg onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="ph-fallback person"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div>
+          <span class="ab-team-badge">Head Coach</span>
+        </div>
+        <h3 class="ab-team-name">Alex Yab</h3>
+        <p class="ab-team-role">Founder &amp; Head Bodybuilding Coach</p>
+        <p class="ab-team-bio">10+ years competitive bodybuilding. 3x regional champion. Certified in sports nutrition, strength &amp; conditioning, and advanced contest prep.</p>
+        <div class="ab-certs"><span>NASM-CPT</span><span>Precision Nutrition L2</span><span>CSCS</span></div>
+      </article>
+      <article class="ab-team-card rv">
+        <div class="ab-team-img" data-cursor="NUTRITION">
+          <img src="images/team-nutrition.jpg" alt="Sarah M., Lead Nutrition Specialist" loading="lazy" decoding="async" data-pimg onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="ph-fallback person"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div>
+          <span class="ab-team-badge">Nutrition Coach</span>
+        </div>
+        <h3 class="ab-team-name">Sarah M.</h3>
+        <p class="ab-team-role">Lead Nutrition Specialist</p>
+        <p class="ab-team-bio">Registered dietitian with expertise in contest prep nutrition, metabolic adaptation, flexible dieting, and performance fueling strategies.</p>
+        <div class="ab-certs"><span>RD</span><span>Sports Nutrition</span><span>ISSN</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="ab-cta" aria-labelledby="cta-h">
+  <div class="ab-wrap">
+    <h2 class="ab-display ab-cta-h sp chars" id="cta-h">READY TO WRITE YOUR <span class="ab-stroke">STORY?</span></h2>
+    <p class="ab-cta-s rv">Join the FitYab family and start your transformation today. Real coaching. Real accountability. Real results.</p>
+    <div class="ab-cta-btns rv">
+      <a href="online-coaching.html" class="btn btn-white" data-magnetic>Start Coaching <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+      <a href="transformations.html" class="btn btn-dark" data-magnetic>See Transformations</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER (shared across all pages — edit shared.js to change it everywhere) -->
+<footer>
+  <div id="site-footer"></div>
+</footer>
+<script>SiteInclude.renderFooter();</script>
+
+<!-- Floating Chat -->
+<div style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;">
+  <button onclick="alert('Chat feature coming soon!')" aria-label="Chat with AI" style="position:relative;width:4rem;height:4rem;background:linear-gradient(135deg,#0EA5E9,#0284C7);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(14,165,233,.4);transition:all .3s;">
+    <span style="position:absolute;inset:0;border-radius:50%;background:#0EA5E9;opacity:.7;animation:ping 1.5s cubic-bezier(0,0,.2,1) infinite;"></span>
+    <svg width="26" height="26" fill="none" stroke="#fff" viewBox="0 0 24 24" style="position:relative;z-index:2;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+    <span style="position:absolute;top:0;right:0;width:1rem;height:1rem;background:#22C55E;border:2px solid #0F0F0F;border-radius:50%;"></span>
+  </button>
+</div>
+
+<!-- Motion libraries (local copies — no CDN dependency) -->
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script src="fx.js"></script>
+<script src="about.js"></script>
+</body>
+</html>
