@@ -84,6 +84,47 @@
         gsap.fromTo(c, { opacity: 0, x: 60 }, { opacity: 1, x: 0, ease: 'none',
           scrollTrigger: { trigger: c.closest('.j-panel'), containerAnimation: travel, start: 'left 85%', end: 'left 50%', scrub: true } });
       });
+
+      /* ---------- Journey-only 3D camera sync (desktop only) ----------
+         Keep the existing Journey pin as the sole horizontal story. The
+         Three.js canvas is loaded only while this gallery is active; the
+         surrounding About page remains a normal vertical page. */
+      if (!window.matchMedia('(min-width: 900px)').matches || window.__fityabJourney3D) return;
+      window.__fityabJourney3D = true;
+
+      var css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = 'fx3d.css';
+      document.head.appendChild(css);
+
+      var script = document.createElement('script');
+      script.src = 'fx3d.js';
+      script.onload = function () {
+        var fx3d = window.FX3D;
+        var journeyST = travel && travel.scrollTrigger;
+        if (!fx3d || !fx3d.on || !journeyST) return;
+
+        /* Scroll progress of the pinned Journey drives the camera position. */
+        fx3d.start({
+          getProgress: function () { return journeyST.progress || 0; },
+          getWorldWidth: function () { return track.scrollWidth; }
+        });
+
+        /* Pause rendering while this Journey is outside the viewport. */
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) fx3d.resume();
+              else fx3d.pause();
+            });
+          }, { threshold: 0 });
+          io.observe(journey);
+        }
+      };
+      script.onerror = function () {
+        if (window.console) console.info('[FitYab Journey] 3D unavailable: fx3d.js could not load.');
+      };
+      document.head.appendChild(script);
     }
   });
 })();
