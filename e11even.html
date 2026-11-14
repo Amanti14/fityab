@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+  <title>E11even Clothing — 11/10 Gym Apparel</title>
+
+</head>
+<body>
+
+<!-- ══ TOAST ══ -->
+<div class="toast" id="toast">
+  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+  <span id="toastMsg">Added to cart!</span>
+</div>
+
+<!-- ══ CART OVERLAY + DRAWER ══ -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-hdr">
+    <div class="cart-hdr-left">
+      <div class="cart-hdr-title">YOUR CART</div>
+      <div class="cart-hdr-count" id="cartHdrCount">0</div>
+    </div>
+    <button class="cart-close" onclick="closeCart()">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="cart-items-wrap" id="cartItemsWrap">
+    <div class="cart-empty" id="cartEmpty">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+      <div class="cart-empty-title">CART IS EMPTY</div>
+      <div class="cart-empty-sub">Add some gear to get started</div>
+    </div>
+  </div>
+  <div class="cart-foot" id="cartFoot" style="display:none;">
+    <div class="cf-row"><span>Subtotal</span><strong id="cfSubtotal">$0.00</strong></div>
+    <div class="cf-ship"><span>Shipping</span><span id="cfShip" style="color:var(--green);font-weight:600;">FREE on orders $75+</span></div>
+    <div class="cf-total"><span>TOTAL</span><strong id="cfTotal">$0.00</strong></div>
+    <button class="btn-checkout" onclick="alert('Checkout coming soon! 🔥')">
+      <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+      SECURE CHECKOUT
+    </button>
+    <button class="btn-continue-shop" onclick="closeCart()">CONTINUE SHOPPING</button>
+    <div class="cf-promo">
+      <div class="cf-promo-row">
+        <input class="promo-inp" id="promoInp" placeholder="Promo code (try: E11EVEN)" />
+        <button class="btn-promo" onclick="applyPromo()">APPLY</button>
+      </div>
+      <div class="promo-ok" id="promoOk">✓ 10% discount applied!</div>
+    </div>
+    <div class="cf-trust">
+      <div class="cf-ti"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>Secure Pay</div>
+      <div class="cf-ti"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>30-Day Returns</div>
+      <div class="cf-ti"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>Free Ship $75+</div>
+    </div>
+    <div class="pay-icons">
+      <span class="pay-icon">VISA</span>
+      <span class="pay-icon">MC</span>
+      <span class="pay-icon">AMEX</span>
+      <span class="pay-icon">PAYPAL</span>
+      <span class="pay-icon">APPLE PAY</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PRODUCT MODAL ══ -->
+<div class="modal-ov" id="modalOv" onclick="handleModalOvClick(event)">
+  <div class="modal" id="prodModal">
+    <button class="modal-x" onclick="closeModal()">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-g">
+      <div class="modal-left" id="modalLeft">
+        <img id="modalImg" class="modal-product-img" src="" alt="product"/>
+        <div class="modal-left-overlay"></div>
+        <span class="modal-left-badge" id="modalBadge"></span>
+      </div>
+      <div class="modal-right">
+        <div class="modal-brand">E11EVEN CLOTHING</div>
+        <div class="modal-name" id="mName"></div>
+        <div class="modal-tagline" id="mTagline"></div>
+        <div class="modal-rating">
+          <span class="modal-stars" id="mStars"></span>
+          <span class="modal-rtxt" id="mRtxt"></span>
+        </div>
+        <div class="modal-price-row">
+          <span class="modal-price" id="mPrice"></span>
+          <span class="modal-was" id="mWas"></span>
+          <span class="modal-save" id="mSave" style="display:none;"></span>
+        </div>
+        <!-- Color -->
+        <div class="mlabel">Color</div>
+        <div class="m-colors" id="mColors"></div>
+        <!-- Size -->
+        <div class="mlabel">Size</div>
+        <div class="m-sizes" id="mSizes"></div>
+        <!-- Qty + add -->
+        <div class="m-qty-row">
+          <div class="mlabel" style="margin-bottom:0;">Qty</div>
+          <div class="m-qty-ctrl">
+            <button class="m-qty-btn" onclick="changeMQty(-1)">−</button>
+            <span class="m-qty-num" id="mQtyNum">1</span>
+            <button class="m-qty-btn" onclick="changeMQty(1)">+</button>
+          </div>
+          <button class="btn-m-cart" onclick="addFromModal()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            ADD TO CART
+          </button>
+        </div>
+        <div class="m-divider"></div>
+        <div class="m-features" id="mFeats"></div>
+        <div class="m-badges" id="mBadges"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ANNOUNCEMENT BAR ══ -->
+<div class="ann-bar">
+  🔥 FREE SHIPPING ON ORDERS $75+ <span>|</span> USE CODE <strong>E11EVEN</strong> FOR 10% OFF <span>|</span> NEW DROP: SLEEVELESS HOODIE NOW LIVE
+</div>
+
+<!-- ══ HEADER ══ -->
+<!-- HEADER (shared across all pages — edit shared.js to change it everywhere) -->
+<header>
+  <div id="site-header"></div>
+</header>
+<script src="shared.js"></script>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <img class="hero-bg-img" src="images/e11even-photo-2.jpg" alt="E11even apparel collection"/>
+  <div class="hero-overlay"></div>
+  <div class="hero-scratch"></div>
+  <div class="wrap" style="width:100%">
+    <div class="hero-content">
+      <div class="hero-eyebrow fade">
+        <div class="hero-eye-line"></div>
+        <div class="hero-eye-txt">New Collection 2026</div>
+      </div>
+      <h1 class="hero-h1 fade d1">
+        TRAIN
+        <span class="acc">11/10</span>
+        LOOK IT
+      </h1>
+      <div class="hero-tagline fade d2">Premium Gym Apparel For Elite Athletes</div>
+      <div class="hero-btns fade d3">
+        <a href="#shop" class="btn-red">
+          SHOP NOW
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="#collections" class="btn-outline-white">
+          VIEW COLLECTIONS
+        </a>
+      </div>
+      <div class="hero-pills fade">
+        <span class="hpill"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Premium Quality</span>
+        <span class="hpill"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Gym-Ready Fit</span>
+        <span class="hpill"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Free Ship $75+</span>
+      </div>
+      <div class="hero-stats">
+        <div class="hst"><div class="hst-n">5K<span class="a">+</span></div><div class="hst-l">Athletes Wearing</div></div>
+        <div class="hst"><div class="hst-n">4.9<span class="a">★</span></div><div class="hst-l">Average Rating</div></div>
+        <div class="hst"><div class="hst-n">11<span class="a">/10</span></div><div class="hst-l">Quality Standard</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COLLECTIONS ══ -->
+<section class="sec dark" id="collections">
+  <div class="wrap">
+    <div class="eyebrow"><span class="eline"></span><span class="etxt">Shop by Category</span></div>
+    <h2 class="stitle mb3">THE <span class="a">COLLECTIONS</span></h2>
+    <div class="split">
+      <!-- Tops -->
+      <div class="collection-img-wrap" style="cursor:pointer;" onclick="filterProds('tops',null)">
+        <img class="collection-img" src="images/e11even-photo-2.jpg" alt="Tops Collection"/>
+        <div class="collection-overlay"></div>
+        <div class="collection-label">
+          <div class="col-tag">Collection</div>
+          <div class="col-name">TOPS &<br>TANKS</div>
+          <a href="#shop" class="col-link" onclick="filterProds('tops',null)">SHOP NOW <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        </div>
+      </div>
+      <!-- Hoodies -->
+      <div class="collection-img-wrap" style="cursor:pointer;" onclick="filterProds('hoodies',null)">
+        <img class="collection-img" src="images/e11even-photo-2.jpg" alt="Hoodies Collection"/>
+        <div class="collection-overlay"></div>
+        <div class="collection-label">
+          <div class="col-tag">Collection</div>
+          <div class="col-name">HOODIES &<br>SWEATS</div>
+          <a href="#shop" class="col-link" onclick="filterProds('hoodies',null)">SHOP NOW <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        </div>
+      </div>
+      <!-- Accessories -->
+      <div class="collection-img-wrap" style="cursor:pointer;" onclick="filterProds('accessories',null)">
+        <img class="collection-img" src="images/e11even-photo-2.jpg" alt="Accessories Collection" style="object-position:top;"/>
+        <div class="collection-overlay"></div>
+        <div class="collection-label">
+          <div class="col-tag">Collection</div>
+          <div class="col-name">ACCESSORIES<br>& GEAR</div>
+          <a href="#shop" class="col-link" onclick="filterProds('accessories',null)">SHOP NOW <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SHOP ══ -->
+<section class="sec mid" id="shop">
+  <div class="wrap">
+    <div class="eyebrow"><span class="eline"></span><span class="etxt">All Products</span></div>
+    <h2 class="stitle mb3">THE <span class="a">FULL LINEUP</span></h2>
+    <div class="shop-layout">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sb-box">
+          <div class="sb-title">Category</div>
+          <div class="fgroup" id="filterGroup">
+            <button class="fbtn active" onclick="filterProds('all',this)">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+              All Items <span class="cnt">9</span>
+            </button>
+            <button class="fbtn" onclick="filterProds('tops',this)">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 20v-2a4 4 0 018 0v2"/></svg>
+              Tops & Tanks <span class="cnt">3</span>
+            </button>
+            <button class="fbtn" onclick="filterProds('hoodies',this)">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3c-1.5 0-3 1-3 3v2H7l-2 3v9h10v-9l-2-3h-2V6c0-2-1.5-3-3-3z"/></svg>
+              Hoodies <span class="cnt">2</span>
+            </button>
+            <button class="fbtn" onclick="filterProds('bottoms',this)">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 3h12l1 9H5L6 3zM5 12l2 9h10l2-9"/></svg>
+              Bottoms <span class="cnt">2</span>
+            </button>
+            <button class="fbtn" onclick="filterProds('accessories',this)">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+              Accessories <span class="cnt">2</span>
+            </button>
+          </div>
+        </div>
+        <div class="sb-box">
+          <div class="sb-title">Price</div>
+          <div class="fgroup">
+            <button class="fbtn" onclick="filterByPrice('all',this)">All Prices</button>
+            <button class="fbtn" onclick="filterByPrice('under35',this)">Under $35</button>
+            <button class="fbtn" onclick="filterByPrice('35to65',this)">$35 – $65</button>
+            <button class="fbtn" onclick="filterByPrice('over65',this)">$65+</button>
+          </div>
+        </div>
+        <div class="sb-box" style="background:rgba(220,38,38,.05);border-color:rgba(220,38,38,.2);">
+          <div class="sb-title" style="color:var(--red);">BUNDLE DEAL</div>
+          <p style="color:var(--muted);font-size:.82rem;line-height:1.6;margin-bottom:.9rem;">Buy any 3 items and get 15% off automatically at checkout.</p>
+          <button class="btn-red" style="width:100%;font-size:.85rem;padding:.65rem;justify-content:center;" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">SHOP NOW</button>
+        </div>
+      </aside>
+
+      <!-- Products -->
+      <div>
+        <div class="sort-bar">
+          <div class="res-count">Showing <span id="resCount">9</span> items</div>
+          <select class="sort-sel" id="sortSel" onchange="sortProds(this.value)">
+            <option value="featured">SORT: FEATURED</option>
+            <option value="price-asc">PRICE: LOW → HIGH</option>
+            <option value="price-desc">PRICE: HIGH → LOW</option>
+            <option value="rating">TOP RATED</option>
+            <option value="newest">NEWEST</option>
+          </select>
+        </div>
+        <div class="pgrid" id="prodGrid"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ BRAND STORY ══ -->
+<section class="sec dark" id="about">
+  <div class="wrap">
+    <div class="hlg2">
+      <div>
+        <div class="brand-story">
+          <div class="story-eyebrow">The Brand</div>
+          <div class="story-title">BUILT IN THE GYM.<br>MADE FOR THE GYM.</div>
+          <p class="story-body">E11even Clothing was born from frustration. We were athletes who couldn't find gear that actually held up to serious training — clothes that looked elite, moved unrestricted, and survived the grind. So we built it ourselves.</p>
+          <p class="story-body" style="margin-top:1rem;">The name is a statement. 11/10 is the standard we hold ourselves to — and the standard we hold our athletes to. Every piece in our lineup is designed to perform at that level.</p>
+          <p class="story-body" style="margin-top:1rem;">No cutting corners. No cheap materials. No compromises. Just apparel that's as serious as the athletes wearing it.</p>
+          <div style="margin-top:2rem;">
+            <a href="#shop" class="btn-red">SHOP THE COLLECTION <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="images/e11even-photo-1.jpg" alt="E11even Logo" style="width:100%;max-width:420px;margin:0 auto;border-radius:.75rem;"/>
+        <div class="g2" style="gap:1rem;margin-top:1.5rem;">
+          <div class="why-card">
+            <div class="why-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+            <div class="why-title">Premium Fabric</div>
+            <div class="why-desc">High-performance cotton blends and moisture-wicking tech fabrics built for intense training sessions.</div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+            <div class="why-title">Athletic Cut</div>
+            <div class="why-desc">Designed with bodybuilders in mind. Tapered waist, wide shoulders, unrestricted range of motion.</div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+            <div class="why-title">Bold Identity</div>
+            <div class="why-desc">The 11/10 graphic is a badge. Wear it knowing you put in work that most people can't comprehend.</div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div>
+            <div class="why-title">Fast Shipping</div>
+            <div class="why-desc">Orders ship within 24 hours. Free tracked delivery on all orders over $75.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ REVIEWS ══ -->
+<section class="sec mid">
+  <div class="wrap">
+    <div class="tc mb3">
+      <div class="eyebrow" style="justify-content:center;"><span class="eline"></span><span class="etxt">Customer Reviews</span><span class="eline"></span></div>
+      <h2 class="stitle">WHAT ATHLETES <span class="a">SAY</span></h2>
+    </div>
+    <div class="g3">
+      <div class="rev-card">
+        <div class="rev-top"><div><div class="rev-name">Marcus T.</div><div class="rev-date">March 2026</div></div><div style="background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.2);color:var(--red);font-size:.65rem;font-weight:700;padding:.15rem .55rem;border-radius:9999px;letter-spacing:.06em;">VERIFIED</div></div>
+        <div class="rev-prod">SLEEVELESS HOODIE</div>
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-body">"Absolute fire. Wore this for back day and got complimented 3 times. The fit is insane — wide in the shoulders, tapered in the waist. Feels premium and looks elite. Won't train in anything else."</p>
+        <div class="rev-verified"><svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified Purchase</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-top"><div><div class="rev-name">Devon R.</div><div class="rev-date">February 2026</div></div><div style="background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.2);color:var(--red);font-size:.65rem;font-weight:700;padding:.15rem .55rem;border-radius:9999px;letter-spacing:.06em;">VERIFIED</div></div>
+        <div class="rev-prod">E11EVEN TEE</div>
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-body">"Competed last month and wore the tee for stage pumping. Got asked where it was from at least 6 times. The 11/10 graphic hits different when you're actually built. Quality is next level."</p>
+        <div class="rev-verified"><svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified Purchase</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-top"><div><div class="rev-name">Jordan K.</div><div class="rev-date">January 2026</div></div><div style="background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.2);color:var(--red);font-size:.65rem;font-weight:700;padding:.15rem .55rem;border-radius:9999px;letter-spacing:.06em;">VERIFIED</div></div>
+        <div class="rev-prod">TRAINING SHORTS</div>
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-body">"Bought the shorts on a whim and now I have 3 pairs. The material doesn't ride up, the fit is perfect for squats, and they look clean enough to wear outside the gym. Best training shorts I've owned."</p>
+        <div class="rev-verified"><svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified Purchase</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="ctaband">
+  <div class="wrap">
+    <div class="ctainner">
+      <img src="images/e11even-photo-1.jpg" alt="E11even" class="cta-logo"/>
+      <h2 class="ctah">TRAIN <span class="a">11/10</span></h2>
+      <p class="ctap">Premium gym apparel for athletes who refuse to settle for average. Free shipping on orders $75+. Use code E11EVEN for 10% off your first order.</p>
+      <div class="cta-btns">
+        <button class="btn-cta-w" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
+          SHOP ALL GEAR
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </button>
+        <a href="online-coaching.html" class="btn-cta-out">GET COACHING TOO</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<!-- FOOTER (shared across all pages — edit shared.js to change it everywhere) -->
+<footer>
+  <div id="site-footer"></div>
+</footer>
+<script>SiteInclude.renderFooter();</script>
+
+<!-- FLOAT CHAT -->
+<div id="fchat">
+  <button class="fcbtn" onclick="alert('Chat coming soon!')" aria-label="Chat">
+    <span class="fcping pg"></span>
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+    <span class="fcdot"></span>
+  </button>
+  <div class="fctip">CHAT WITH AI</div>
+</div>
+
+<script>
+/* ══════════════════════════════
+   PRODUCT DATA
+══════════════════════════════ */
+const LOGO = 'images/e11even-photo-1.jpg';
+const APPAREL = 'images/e11even-photo-2.jpg';
+
+const products = [
+  {
+    id:0, name:'Sleeveless Hoodie', cat:'hoodies', type:'Hoodie',
+    price:79.99, wasPrice:null, badge:'NEW DROP', badgeColor:'#DC2626',
+    rating:4.9, reviews:312, isNew:true,
+    tagline:'The statement piece. Cut-off sleeves, front pocket, full graffiti print.',
+    desc:'The flagship. Sleeveless performance hoodie with the 11/10 graffiti print across the chest. Built for athletes who want to be noticed.',
+    colors:['#000000','#1a1a1a'],
+    sizes:['S','M','L','XL','XXL'],
+    soldOut:[],
+    image: APPAREL,
+    features:['Premium 320gsm cotton-poly blend','Cut sleeve design for maximum shoulder display','Kangaroo pocket — double stitched','Tagless interior for all-day comfort','True-to-size athletic cut'],
+    badges:['Free Shipping','30-Day Returns','In Stock']
+  },
+  {
+    id:1, name:'E11EVEN Training Tee', cat:'tops', type:'T-Shirt',
+    price:44.99, wasPrice:null, badge:'BESTSELLER', badgeColor:'#DC2626',
+    rating:4.9, reviews:547, isNew:false,
+    tagline:'The essential. Classic cut, massive 11/10 graphic, unbeatable feel.',
+    desc:'Our best-selling tee. The 11/10 E11EVEN graffiti graphic takes up the full chest. Classic athletic fit designed to show off your physique.',
+    colors:['#000000'],
+    sizes:['S','M','L','XL','XXL','XXXL'],
+    soldOut:[],
+    image: APPAREL,
+    features:['180gsm combed ring-spun cotton','Semi-relaxed athletic cut','Full-chest graffiti screen print','Pre-shrunk — no post-wash surprise','Reinforced crew neck collar'],
+    badges:['Free Shipping','Bestseller','5★ Rated']
+  },
+  {
+    id:2, name:'Training Tank', cat:'tops', type:'Tank Top',
+    price:34.99, wasPrice:null, badge:null, badgeColor:null,
+    rating:4.7, reviews:203, isNew:false,
+    tagline:'Breathable racerback tank for maximum pump display.',
+    desc:'Ultra-breathable racerback tank designed for peak training sessions. Moisture-wicking fabric keeps you dry, athletic cut keeps you looking elite.',
+    colors:['#000000','#1a1a1a'],
+    sizes:['S','M','L','XL','XXL'],
+    soldOut:[],
+    image: APPAREL,
+    features:['Ultra-lightweight moisture-wicking fabric','Racerback design for full shoulder freedom','Deep cut armholes for pump display','11/10 print on front chest','Quick-dry technology'],
+    badges:['Free Shipping','In Stock']
+  },
+  {
+    id:3, name:'Pullover Hoodie', cat:'hoodies', type:'Hoodie',
+    price:89.99, wasPrice:109.99, badge:'SALE', badgeColor:'#22C55E',
+    rating:4.8, reviews:178, isNew:false,
+    tagline:'The heavyweight. Full sleeves, kangaroo pocket, iconic print.',
+    desc:'The cold-weather essential. Heavyweight pullover hoodie with full sleeves and the signature E11even graffiti on front. Your post-workout staple.',
+    colors:['#000000'],
+    sizes:['S','M','L','XL','XXL'],
+    soldOut:['S'],
+    image: APPAREL,
+    features:['380gsm heavyweight fleece','Thick drawstring hood for structure','Reinforced cuffs and waistband','Premium kangaroo pocket','Unisex athletic cut'],
+    badges:['On Sale','30-Day Returns']
+  },
+  {
+    id:4, name:'Training Shorts', cat:'bottoms', type:'Shorts',
+    price:49.99, wasPrice:null, badge:null, badgeColor:null,
+    rating:4.8, reviews:289, isNew:false,
+    tagline:'Zero restriction. Full range. Built for squats.',
+    desc:'Performance shorts designed to move with you. Flexible waistband, deep pockets, quick-dry fabric, and small E11even hit on the left thigh.',
+    colors:['#000000','#1a1a1a'],
+    sizes:['S','M','L','XL','XXL'],
+    soldOut:[],
+    image: APPAREL,
+    features:['4-way stretch performance fabric','Elastic waistband with internal drawcord','Two deep side pockets','Small 11/10 logo on left thigh','Quick-dry moisture-wicking finish'],
+    badges:['Free Shipping','In Stock']
+  },
+  {
+    id:5, name:'Joggers', cat:'bottoms', type:'Joggers',
+    price:69.99, wasPrice:null, badge:'NEW', badgeColor:'#0EA5E9',
+    rating:4.7, reviews:94, isNew:true,
+    tagline:'Post-workout flex. Street-to-gym without compromise.',
+    desc:'Premium athletic joggers for training and street. Tapered fit, cuffed ankle, E11even print on the left leg. The perfect post-session look.',
+    colors:['#000000'],
+    sizes:['S','M','L','XL','XXL'],
+    soldOut:[],
+    image: APPAREL,
+    features:['French terry cotton-blend fabric','Tapered athletic fit with cuffed ankle','Elasticated waistband with drawstring','Two side pockets + one back zip pocket','11/10 screen print — left leg'],
+    badges:['New Arrival','Free Shipping']
+  },
+  {
+    id:6, name:'Snapback Cap', cat:'accessories', type:'Headwear',
+    price:29.99, wasPrice:null, badge:null, badgeColor:null,
+    rating:4.8, reviews:156, isNew:false,
+    tagline:'Top off the fit. 11/10 snapback in all-black.',
+    desc:'Structured flat-brim snapback with the 11/10 E11even emblem on front. One size fits all. Part of the look.',
+    colors:['#000000','#DC2626'],
+    sizes:['ONE SIZE'],
+    soldOut:[],
+    image: APPAREL,
+    features:['6-panel structured snapback','Flat brim — adjustable back strap','Raised embroidered 11/10 logo','Moisture-wicking sweatband','One size fits all'],
+    badges:['In Stock','Free Shipping']
+  },
+  {
+    id:7, name:'Gym Gloves', cat:'accessories', type:'Accessories',
+    price:24.99, wasPrice:29.99, badge:'SALE', badgeColor:'#22C55E',
+    rating:4.6, reviews:87, isNew:false,
+    tagline:'Grip harder. Train heavier. Look elite.',
+    desc:'Half-finger training gloves with palm grip pads and the E11even hit on the wrist strap. Maximum grip, minimum bulk.',
+    colors:['#000000','#DC2626'],
+    sizes:['S/M','L/XL'],
+    soldOut:[],
+    image: APPAREL,
+    features:['Reinforced palm grip pads','Half-finger design for bar feel','Velcro wrist support strap','Breathable mesh back panel','E11even logo on wrist strap'],
+    badges:['On Sale','In Stock']
+  },
+  {
+    id:8, name:'Gym Bag', cat:'accessories', type:'Bag',
+    price:59.99, wasPrice:null, badge:'LIMITED', badgeColor:'#F59E0B',
+    rating:4.9, reviews:63, isNew:true,
+    tagline:'Carry the whole operation. One bag for everything.',
+    desc:'Heavy-duty gym duffel bag with dedicated shoe compartment, main training section, and side water bottle holder. E11even graffiti on the side panel.',
+    colors:['#000000'],
+    sizes:['ONE SIZE'],
+    soldOut:[],
+    image: APPAREL,
+    features:['40L capacity — fits everything','Separate ventilated shoe compartment','Padded carry handles + shoulder strap','External water bottle holder','Heavy-duty metal zipper pulls'],
+    badges:['Limited Stock','Free Shipping']
+  }
+];
+
+/* ══ CART STATE ══ */
+let cart = [];
+let curFilter = 'all';
+let curPrice = 'all';
+let curSort = 'featured';
+let mProdId = null;
+let mQty = 1;
+let mColor = '';
+let mSize = '';
+let promoApplied = false;
+
+/* ══ RENDER PRODUCTS ══ */
+function renderProducts() {
+  let list = products.filter(p => {
+    const catOk = curFilter === 'all' || p.cat === curFilter;
+    let priceOk = true;
+    if (curPrice === 'under35') priceOk = p.price < 35;
+    else if (curPrice === '35to65') priceOk = p.price >= 35 && p.price <= 65;
+    else if (curPrice === 'over65') priceOk = p.price > 65;
+    return catOk && priceOk;
+  });
+  if (curSort === 'price-asc') list.sort((a,b) => a.price - b.price);
+  else if (curSort === 'price-desc') list.sort((a,b) => b.price - a.price);
+  else if (curSort === 'rating') list.sort((a,b) => b.rating - a.rating);
+  else if (curSort === 'newest') list.sort((a,b) => (b.isNew?1:0)-(a.isNew?1:0));
+
+  document.getElementById('resCount').textContent = list.length;
+  const grid = document.getElementById('prodGrid');
+  const save = p => p.wasPrice ? Math.round((1-p.price/p.wasPrice)*100) : null;
+
+  grid.innerHTML = list.map(p => `
+  <div class="pcard" id="pcard-${p.id}">
+    ${p.badge ? `<span class="pcard-badge" style="background:${p.badgeColor};">${p.badge}</span>` : ''}
+    <button class="pcard-wish" id="wish-${p.id}" onclick="toggleWish(${p.id},event)">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+    </button>
+    <div class="pcard-img" onclick="openModal(${p.id})">
+      <img src="${p.image}" alt="${p.name}" loading="lazy"/>
+    </div>
+    <div class="pcard-body">
+      <div class="pcard-type">${p.type}</div>
+      <div class="pcard-name" onclick="openModal(${p.id})">${p.name}</div>
+      <div class="pcard-desc">${p.desc.substring(0,80)}...</div>
+      <div class="pcard-rating">
+        <span class="stars-sm">${'★'.repeat(Math.floor(p.rating))}</span>
+        <span class="rtxt">${p.rating} (${p.reviews})</span>
+      </div>
+      <div class="color-dots">
+        ${p.colors.map((c,i) => `<span class="cdot ${i===0?'active':''}" style="background:${c};" onclick="this.parentNode.querySelectorAll('.cdot').forEach(d=>d.classList.remove('active'));this.classList.add('active')"></span>`).join('')}
+      </div>
+      <div class="pcard-foot">
+        <div class="pcard-price-block">
+          <span class="price-now">$${p.price.toFixed(2)}</span>
+          ${p.wasPrice ? `<span class="price-was">$${p.wasPrice.toFixed(2)}</span>` : ''}
+          ${save(p) ? `<span class="price-save">SAVE ${save(p)}%</span>` : ''}
+        </div>
+        <button class="btn-add" id="add-${p.id}" onclick="quickAdd(${p.id})">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          ADD
+        </button>
+      </div>
+    </div>
+  </div>`).join('');
+}
+
+function filterProds(cat, btn) {
+  curFilter = cat;
+  if (btn) {
+    document.querySelectorAll('#filterGroup .fbtn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  } else {
+    document.querySelectorAll('#filterGroup .fbtn').forEach(b => {
+      b.classList.toggle('active', b.getAttribute('onclick') && b.getAttribute('onclick').includes(`'${cat}'`));
+    });
+  }
+  renderProducts();
+  document.getElementById('shop').scrollIntoView({behavior:'smooth'});
+}
+function filterByPrice(range, btn) {
+  curPrice = range;
+  btn.closest('.sb-box').querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProducts();
+}
+function sortProds(val) { curSort=val; renderProducts(); }
+function toggleWish(id,e) {
+  e.stopPropagation();
+  document.getElementById('wish-'+id).classList.toggle('wished');
+}
+
+/* ══ QUICK ADD (default first color + size) ══ */
+function quickAdd(id) {
+  const p = products[id];
+  const size = p.sizes.find(s => !p.soldOut.includes(s)) || p.sizes[0];
+  addToCart(id, 1, p.colors[0], size);
+  const btn = document.getElementById('add-'+id);
+  if(btn){btn.classList.add('added');btn.innerHTML='✓ ADDED';setTimeout(()=>{btn.classList.remove('added');btn.innerHTML='<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="14" height="14"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg> ADD';},1600);}
+}
+
+/* ══ MODAL ══ */
+function openModal(id) {
+  const p = products[id];
+  mProdId = id; mQty = 1;
+  mColor = p.colors[0];
+  mSize = p.sizes.find(s=>!p.soldOut.includes(s)) || p.sizes[0];
+
+  document.getElementById('mName').textContent = p.name;
+  document.getElementById('mTagline').textContent = p.tagline;
+  document.getElementById('mStars').textContent = '★'.repeat(Math.floor(p.rating));
+  document.getElementById('mRtxt').textContent = `${p.rating} · ${p.reviews} reviews`;
+  document.getElementById('mPrice').textContent = `$${p.price.toFixed(2)}`;
+  document.getElementById('mWas').textContent = p.wasPrice ? `$${p.wasPrice.toFixed(2)}` : '';
+  const saveEl = document.getElementById('mSave');
+  const sv = p.wasPrice ? Math.round((1-p.price/p.wasPrice)*100) : null;
+  if(sv){saveEl.style.display='';saveEl.textContent=`SAVE ${sv}%`;}else{saveEl.style.display='none';}
+
+  document.getElementById('modalImg').src = p.image;
+  const bEl = document.getElementById('modalBadge');
+  if(p.badge){bEl.textContent=p.badge;bEl.style.background=p.badgeColor;bEl.style.display='';}else{bEl.style.display='none';}
+
+  document.getElementById('mColors').innerHTML = p.colors.map((c,i)=>
+    `<button class="m-color-btn ${i===0?'active':''}" style="background:${c};" onclick="selectMColor(this,'${c}')"></button>`).join('');
+
+  document.getElementById('mSizes').innerHTML = p.sizes.map(s=>
+    `<button class="m-size ${s===mSize?'active':''} ${p.soldOut.includes(s)?'sold-out':''}" onclick="selectMSize(this,'${s}')">${s}${p.soldOut.includes(s)?' (SOLD OUT)':''}</button>`).join('');
+
+  document.getElementById('mQtyNum').textContent = '1';
+
+  document.getElementById('mFeats').innerHTML = p.features.map(f=>
+    `<div class="m-feat"><svg class="mck" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>${f}</div>`).join('');
+
+  document.getElementById('mBadges').innerHTML = p.badges.map(b=>
+    `<div class="m-badge"><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>${b}</div>`).join('');
+
+  document.getElementById('modalOv').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modalOv').classList.remove('open');document.body.style.overflow='';}
+function handleModalOvClick(e){if(e.target===document.getElementById('modalOv'))closeModal();}
+function selectMColor(el,c){document.querySelectorAll('.m-color-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');mColor=c;}
+function selectMSize(el,s){document.querySelectorAll('.m-size').forEach(b=>b.classList.remove('active'));el.classList.add('active');mSize=s;}
+function changeMQty(d){mQty=Math.max(1,mQty+d);document.getElementById('mQtyNum').textContent=mQty;}
+function addFromModal(){addToCart(mProdId,mQty,mColor,mSize);closeModal();openCart();}
+
+/* ══ CART ══ */
+function addToCart(id, qty=1, color='', size='') {
+  const p = products[id];
+  const c = color||p.colors[0];
+  const s = size||(p.sizes.find(sz=>!p.soldOut.includes(sz))||p.sizes[0]);
+  const key = `${id}|${c}|${s}`;
+  const ex = cart.find(i=>i.key===key);
+  if(ex){ex.qty+=qty;}else{cart.push({key,id,name:p.name,type:p.type,price:p.price,color:c,size:s,qty,image:p.image});}
+  updateCartUI();
+  showToast(`${p.name} added to cart!`);
+}
+
+function removeFromCart(key){cart=cart.filter(i=>i.key!==key);updateCartUI();}
+function changeQty(key,d){
+  const item=cart.find(i=>i.key===key);
+  if(!item)return;
+  item.qty+=d;
+  if(item.qty<=0)removeFromCart(key);else updateCartUI();
+}
+
+function updateCartUI() {
+  const sub = cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const discount = promoApplied ? sub*0.1 : 0;
+  const final = sub - discount;
+  const ship = final >= 75 ? 0 : 8.99;
+  const cnt = cart.reduce((s,i)=>s+i.qty,0);
+
+  document.getElementById('cartCount').textContent = cnt;
+  document.getElementById('cartCountMob').textContent = cnt;
+  document.getElementById('cartHdrCount').textContent = cnt;
+
+  const cntEl = document.getElementById('cartCount');
+  cntEl.classList.remove('bounce');void cntEl.offsetWidth;cntEl.classList.add('bounce');
+
+  const wrap = document.getElementById('cartItemsWrap');
+  const empty = document.getElementById('cartEmpty');
+  const foot = document.getElementById('cartFoot');
+
+  if(cart.length===0){
+    wrap.innerHTML='';wrap.appendChild(empty);
+    empty.style.display='flex';foot.style.display='none';
+  } else {
+    empty.style.display='none';foot.style.display='block';
+    wrap.innerHTML = cart.map(item=>`
+    <div class="citem">
+      <div class="citem-img">
+        <img src="${item.image}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover;border-radius:.35rem;"/>
+      </div>
+      <div class="citem-info">
+        <div class="citem-name">${item.name}</div>
+        <div class="citem-variant">${item.type} · ${item.size} · <span style="display:inline-block;width:.7rem;height:.7rem;background:${item.color};border-radius:50%;vertical-align:middle;border:1px solid rgba(255,255,255,.3);"></span></div>
+        <div class="citem-price">$${(item.price*item.qty).toFixed(2)}</div>
+        <div class="citem-controls">
+          <button class="qty-btn" onclick="changeQty('${item.key}',-1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty('${item.key}',1)">+</button>
+        </div>
+      </div>
+      <button class="citem-remove" onclick="removeFromCart('${item.key}')">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>`).join('');
+  }
+
+  document.getElementById('cfSubtotal').textContent = `$${sub.toFixed(2)}`;
+  const shipEl = document.getElementById('cfShip');
+  shipEl.textContent = ship===0 ? 'FREE ✓' : `$${ship.toFixed(2)}`;
+  shipEl.style.color = ship===0 ? 'var(--green)' : 'var(--muted)';
+  document.getElementById('cfTotal').textContent = `$${(final+ship).toFixed(2)}`;
+}
+
+function applyPromo(){
+  const code = document.getElementById('promoInp').value.trim().toUpperCase();
+  if((code==='E11EVEN'||code==='FITYAB10')&&!promoApplied){
+    promoApplied=true;document.getElementById('promoOk').style.display='block';
+    updateCartUI();showToast('Promo applied! 10% off.');
+  }else if(promoApplied){showToast('Promo already applied!');}
+  else{showToast('Invalid code. Try: E11EVEN');}
+}
+
+/* ══ CART OPEN/CLOSE ══ */
+function openCart(){
+  document.getElementById('cartOverlay').classList.add('open');
+  document.getElementById('cartDrawer').classList.add('open');
+  document.body.style.overflow='hidden';
+  closeMob();
+}
+function closeCart(){
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+/* ══ TOAST ══ */
+let toastTmr;
+function showToast(msg){
+  clearTimeout(toastTmr);
+  const el=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  el.classList.add('show');
+  toastTmr=setTimeout(()=>el.classList.remove('show'),2600);
+}
+
+/* ══ SCROLL FADE IN ══ */
+const scObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity='1';e.target.style.transform='translateY(0)';
+      scObs.unobserve(e.target);
+    }
+  });
+},{threshold:.08});
+
+/* ══ INIT ══ */
+document.addEventListener('DOMContentLoaded', ()=>{
+  renderProducts();
+  updateCartUI();
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeCart();}});
+  setTimeout(()=>{
+    document.querySelectorAll('.why-card,.rev-card,.collection-img-wrap').forEach(el=>{
+      el.style.opacity='0';el.style.transform='translateY(22px)';el.style.transition='opacity .5s ease, transform .5s ease';
+      scObs.observe(el);
+    });
+  },200);
+});
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');}
+</script>
+</body>
+</html>
