@@ -1,70 +1,34 @@
 /* ==========================================================================
-   FitYab — 3D world layer styles (fx3d.css)
-   Loaded together with fxworld.js + fx3d.js (injected by home.js on Home).
-   Two independent switches on <html>:
-     .fxw-on    the pinned horizontal world is active (desktop, motion on)
-     .fx3d-on   the WebGL scene is running  |  .fx3d-off  it is not (reason
-                is always shown in the #fx3dStatus readout)
-   Below 900px the world is never assembled, so nothing here applies there.
+   FitYab — 3D journey layer styles (fx3d.css)
+   Used ONLY by the About page's pinned Journey gallery (about.js loads it
+   on desktop). The rest of every page stays a normal vertical page.
+   Switches on <html>:
+     .fx3d-on      the WebGL scene is running
+     .fx3d-live    the Journey is on screen, so the canvas is revealed
+   When 3D cannot run, the reason is always visible in the status readout.
    ========================================================================== */
 
-/* ---------- the world: pinned horizontal track ---------- */
-.fxw{position:relative;height:100vh;height:100svh;overflow:hidden}
-.fxw-viewport{height:100%}
-.fxw-track{display:flex;height:100%;width:max-content;will-change:transform}
-.fxw-panel{position:relative;flex:0 0 auto;box-sizing:border-box;width:100vw;height:100%;
-  display:flex;flex-direction:column;padding-top:var(--ab-hdr);
-  overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
-.fxw-panel::-webkit-scrollbar{display:none}
-/* safe vertical centering that never clips overflowing content */
-.fxw-panel>*:first-child{margin-top:auto}
-.fxw-panel>*:last-child{margin-bottom:auto}
+/* ---------- WebGL canvas: fixed, behind content, never interactive.
+   Hidden by default; revealed only while the Journey is in the viewport
+   (about.js toggles .fx3d-live) so the scene never lingers behind the
+   rest of the vertical page. ---------- */
+.fx3d-canvas{position:fixed;inset:0;z-index:0;display:block;pointer-events:none;
+  opacity:0;transition:opacity .7s ease}
+html.fx3d-live .fx3d-canvas{opacity:1}
 
-/* hero chapter: hero fills the panel, marquee strip sits at its bottom */
-.fxw-panel:has(>.ab-hero)>*{margin-top:0!important;margin-bottom:0!important}
-.fxw-panel:has(>.ab-hero)>.ab-hero{flex:1 1 auto;min-height:0;padding-top:1.5rem}
-.fxw-panel>.ab-marquee{flex:0 0 auto}
-
-/* hoisted program panels (were the .hs pinned gallery) */
-.fxw-panel:has(>.hs-prog){width:86vw;padding-left:5vw;padding-right:5vw}
-.fxw-panel>.hs-panel{flex:0 0 auto;width:100%;min-height:0;scroll-snap-align:none}
-
-/* ---------- world HUD: chapter label, progress bar, counter ---------- */
-.fxw-ui{position:absolute;left:var(--ab-pad);bottom:1.35rem;z-index:30;
-  display:flex;align-items:center;gap:1.1rem;pointer-events:none}
-.fxw-ui .lab{font-family:var(--h,'Rajdhani',sans-serif);font-weight:700;font-size:.85rem;
-  letter-spacing:.3em;text-transform:uppercase;color:#fff;white-space:nowrap}
-.fxw-ui .bar{position:relative;width:9rem;height:2px;background:rgba(255,255,255,.16);overflow:hidden}
-.fxw-ui .bar i{position:absolute;inset:0;background:var(--ab-red);transform:scaleX(0);transform-origin:left center}
-.fxw-ui .cnt{font:700 .72rem/1 ui-monospace,Menlo,monospace;letter-spacing:.12em;color:var(--ab-mute)}
-
-/* ---------- WebGL canvas (behind the content, never interactive) ---------- */
-.fx3d-canvas{position:fixed;inset:0;z-index:0;display:block;pointer-events:none}
-
-/* content sits above the canvas; sections go transparent so the 3D
-   world shows through (readability is untouched: the scene renders near
-   black, text stays white-on-dark) */
-html.fx3d-on .ab-main{background:transparent;z-index:1}
-html.fx3d-on .ab-sec,html.fx3d-on .hs{background:transparent}
-html.fx3d-on .ab-hero{background:radial-gradient(60rem 40rem at 85% 30%,rgba(220,38,38,.22),transparent 60%),
-  radial-gradient(40rem 30rem at 0% 100%,rgba(220,38,38,.12),transparent 60%)}
-html.fx3d-on .hm-hero-bg img{opacity:.2}
+/* While the Journey plays, let the 3D world show through it (the scene
+   renders near-black; text contrast is unchanged). */
+html.fx3d-on.fx3d-live .journey{background:transparent}
 
 /* ---------- status readout (why 3D is on/off — never a silent failure) ---------- */
 .fx3d-status{position:fixed;right:1rem;bottom:1rem;z-index:60;max-width:min(24rem,72vw);
   font:600 .64rem/1.5 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.06em;text-transform:uppercase;
   padding:.5rem .75rem;border:1px solid var(--ab-line);background:rgba(5,5,5,.78);color:var(--ab-mute);
   pointer-events:none}
-.fx3d-status.on{color:#22C55E;border-color:rgba(34,197,94,.35);animation:fx3dFade 1.2s 6s forwards}
+.fx3d-status.on{color:#22C55E;border-color:rgba(34,197,94,.35);animation:fx3dFade 1.2s 8s forwards}
 .fx3d-status.off{color:#F59E0B;border-color:rgba(245,158,11,.4)}
 @keyframes fx3dFade{to{opacity:0}}
 
-/* ---------- hero subject slot, HTML fallback (WebGL off / three.js missing) ---------- */
-.fx-subject-fallback{display:none;position:absolute;right:3vw;bottom:12%;width:min(30vw,20rem);z-index:1;
-  pointer-events:none}
-html.anim.fx3d-off .fx-subject-fallback{display:flex}
-@media (max-width:899px){.fx-subject-fallback{display:none!important}}
-
-/* ---------- reduced motion / print: no canvas, no HUD ---------- */
-@media (prefers-reduced-motion:reduce){.fx3d-canvas,.fxw-ui,.fx3d-status{display:none!important}}
-@media print{.fx3d-canvas,.fxw-ui,.fx3d-status{display:none!important}}
+/* ---------- reduced motion / print ---------- */
+@media (prefers-reduced-motion:reduce){.fx3d-canvas,.fx3d-status{display:none!important}}
+@media print{.fx3d-canvas,.fx3d-status{display:none!important}}
