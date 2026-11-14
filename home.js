@@ -155,7 +155,7 @@
     }
   })();
 
-  /* ---------- Motion beyond this point needs the engine ---------- */
+  /* ---------- Programs: pinned horizontal gallery ---------- */
   var FX = window.FX;
   if (!FX || FX.reduced) return;
 
@@ -176,47 +176,6 @@
   var section = $('#programs');
   if (!section) return;
 
-  /* ======================================================================
-     DESKTOP (>=900px): the futuristic side-scrolling 3D world.
-     fxworld.js assembles the chapters into one pinned horizontal track and
-     pulls in fx3d.js (Three.js scene) itself. If WebGL or vendor/three.min.js
-     is unavailable, fx3d.js shows the reason on screen and the world still
-     runs on GSAP alone — never a blank page.
-     PHONES/TABLETS: unchanged — the existing pinned/swipe programs gallery.
-     ====================================================================== */
-  if (window.matchMedia('(min-width: 900px)').matches) {
-
-    var css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = 'fx3d.css';
-    document.head.appendChild(css);
-
-    /* Labelled subject-slot fallback for the hero (visible only when the 3D
-       layer is off — see .fx-subject-fallback in fx3d.css). The real trainer
-       media goes in images/ or videos/ and is picked up automatically. */
-    var hero = $('#hero');
-    if (hero) {
-      var fb = document.createElement('div');
-      fb.className = 'fx-subject-fallback';
-      fb.setAttribute('aria-hidden', 'true');
-      fb.innerHTML =
-        '<svg viewBox="0 0 200 400" fill="none" stroke="rgba(220,38,38,.55)" stroke-width="3" stroke-dasharray="10 8">' +
-          '<circle cx="100" cy="58" r="24"/>' +
-          '<path d="M60 120 L140 120 L150 220 L130 225 L115 265 L125 385 L85 385 L95 265 L80 225 L60 220 Z"/>' +
-          '<path d="M60 120 L30 215 M140 120 L170 215"/>' +
-        '</svg>' +
-        '<span style="font:700 .62rem/1.6 ui-monospace,Menlo,monospace;letter-spacing:.08em;color:var(--ab-mute);text-transform:uppercase">' +
-          'subject slot<br>images/person.png</span>';
-      hero.appendChild(fb);
-    }
-
-    var s = document.createElement('script');
-    s.src = 'fxworld.js';
-    document.head.appendChild(s);
-    return;
-  }
-
-  /* ---------- Programs: pinned horizontal gallery (small screens path) ---------- */
   FX.hscroll({
     section: section,
     viewport: $('#hsView'),
